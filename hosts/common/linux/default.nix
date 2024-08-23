@@ -7,5 +7,6 @@
   imports = [
     ../global
     ./openssh.nix
+    ./grub.nix
   ];
 }
