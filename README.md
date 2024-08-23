@@ -13,7 +13,7 @@
     sudo disko --mode disko --flake github:kttr-io/nix-config#<your-hostname>
     ```
 1. Install the system
- 
+
     ```shell
-    sudo nixos-install --flake github:kttr-io/nix-config#<your-hostname>
+    sudo nixos-install --no-root-passwd --flake github:kttr-io/nix-config#<your-hostname>
     ```

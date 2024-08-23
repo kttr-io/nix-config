@@ -7,13 +7,6 @@
 , ...
 }:
 {
-  imports = [
-    inputs.disko.nixosModules.disko
-    ../../disk/btrfs
-  ];
-
-  disko.devices.disk.main.device = "/dev/xvda";
-
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "sr_mod" "xen_blkfront" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];

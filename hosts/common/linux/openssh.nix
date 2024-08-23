@@ -4,5 +4,8 @@
 , pkgs
 , ...
 }: {
-  services.openssh.enable = lib.mkDefault true;
+  services.openssh = {
+    enable = lib.mkDefault true;
+    settings.PasswordAuthentication = false;
+  };
 }

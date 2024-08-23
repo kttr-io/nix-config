@@ -10,4 +10,6 @@
     ./bootloader.nix
     ./zram.nix
   ];
+
+  users.users.root.hashedPassword = "!";
 }
