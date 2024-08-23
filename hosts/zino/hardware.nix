@@ -12,7 +12,7 @@
     ../../disk/hybrid
   ];
 
-  disko.devices.disk.main.device = "/dev/vda";
+  disko.devices.disk.main.device = "/dev/xvda";
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "sr_mod" "xen_blkfront" ];
   boot.initrd.kernelModules = [ ];
