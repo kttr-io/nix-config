@@ -6,9 +6,10 @@
 , ...
 }: {
   imports = [
-    ../common/global
+    ../common/linux
     ../common/users/michael
-
     ./hardware.nix
   ];
+
+  system.stateVersion = "24.05";
 }

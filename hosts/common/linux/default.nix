@@ -5,6 +5,7 @@
 , ...
 }: {
   imports = [
-    ./nix.nix
+    ../global
+    ./openssh.nix
   ];
 }

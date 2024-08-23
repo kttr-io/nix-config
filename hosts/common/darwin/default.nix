@@ -5,6 +5,7 @@
 , ...
 }: {
   imports = [
-    ./nix.nix
+    ../global
+    ./nix-daemon.nix
   ];
 }
