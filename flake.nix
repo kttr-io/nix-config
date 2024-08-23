@@ -43,7 +43,7 @@
       nixosHosts = [
         "axion"
         "hadron"
-	"zino"
+        "zino"
       ];
 
       darwinHosts = [

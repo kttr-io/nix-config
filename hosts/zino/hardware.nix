@@ -9,7 +9,7 @@
 {
   imports = [
     inputs.disko.nixosModules.disko
-    ../../disk/hybrid
+    ../../disk/btrfs
   ];
 
   disko.devices.disk.main.device = "/dev/xvda";
