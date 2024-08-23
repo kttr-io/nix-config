@@ -12,7 +12,8 @@
     #   <your-hostname> before running disko!
     sudo disko --mode disko --flake github:kttr-io/nix-config#<your-hostname>
     ```
-1. Install the system 
+1. Install the system
+ 
     ```shell
     sudo nixos-install --flake github:kttr-io/nix-config#<your-hostname>
     ```
