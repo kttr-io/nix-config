@@ -71,6 +71,7 @@
 
       users = [
         "michael@axion"
+        "michael@hadron"
         "michael"
       ];
 
