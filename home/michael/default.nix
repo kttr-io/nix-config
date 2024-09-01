@@ -6,24 +6,19 @@
 }:
 let
   username = "michael";
-  homeDirectory =
-    if pkgs.stdenv.isDarwin
-    then "/Users/${username}"
-    else "/home/${username}";
+  username_full = "Michael Kötter";
+  email = "michael@m-koetter.de";
 in
 {
-  home = {
-    inherit username;
-    inherit homeDirectory;
-  };
-
-  home.packages = with pkgs; [
-    nixd
-    nixpkgs-fmt
+  imports = [
+    ../common/global
   ];
 
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
+  home.common.global.username = username;
+  home.common.global.bitwarden.email = email;
+
+  home.common.global.git.userName = username_full;
+  home.common.global.git.userEmail = email;
 
   home.stateVersion = "24.05";
 }

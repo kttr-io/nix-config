@@ -33,6 +33,16 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -60,6 +70,7 @@
       ];
 
       users = [
+        "michael@axion"
         "michael"
       ];
 
@@ -80,6 +91,9 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/${host}
+            {
+              networking.hostName = "${host}";
+            }
           ];
         }
       );
@@ -92,6 +106,9 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/${host}
+            {
+              networking.hostName = "${host}";
+            }
           ];
         }
       );

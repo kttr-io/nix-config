@@ -4,9 +4,11 @@
 , config
 , pkgs
 , ...
-}: {
+}:
+{
   imports = [
     inputs.nixos-hardware.nixosModules.dell-xps-13-9370
+    inputs.nixos-hardware.nixosModules.common-hidpi
     ./hardware.nix
 
     inputs.disko.nixosModules.disko
@@ -16,15 +18,21 @@
     ../common/users/michael
   ];
 
+  common.linux.bootloader.secureboot = true;
+  common.linux.desktop.enable = true;
+
   disko.devices.disk.main.device = "/dev/nvme0n1";
 
-  zramSwap.enable = lib.mkDefault true;
+  environment.systemPackages = with pkgs; [
+    dell-command-configure
+  ];
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
+  programs.hyprland.enable = true;
+
+  console.keyMap = "de";
+
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = true;
 
   system.stateVersion = "24.05";
 }

@@ -1,0 +1,69 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    text-shadow: #000000 0 0 5px;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.5);
+    color: #ffffff;
+    border: none;
+}
+
+label.module {
+    padding: 0px 10px;
+    margin: 0px 0px;
+}
+
+.modules-left > widget:first-child > * {
+    margin-left: 10px;
+}
+
+.modules-right > widget:last-child > * {
+    margin-right: 10px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -2px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+    
+    color: inherit;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+}
+
+#workspaces button {
+    padding: 0 5px;
+}
+
+#workspaces button.active {
+    box-shadow: inset 0 -2px #ffffff;
+}
+
+#window,
+#workspaces,
+#submap,
+#language,
+#cpu,
+#battery,
+#network,
+#pulseaudio,
+#clock {
+    background-color: transparent;
+    color: inherit;
+}
+
+label#submap {
+    background-color: #ffffff;
+    color: #000000;
+    text-shadow: none;
+    border-radius: 3px;
+    margin: 3px 0px;
+}

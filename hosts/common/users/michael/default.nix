@@ -3,7 +3,11 @@
 , config
 , pkgs
 , ...
-}: {
+}: 
+let
+  defaultPassword = "correcthorsebatterystaple";
+in
+{
   users.users = {
     michael = {
       isNormalUser = true;
@@ -13,7 +17,7 @@
         "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIFVeV5Uk7FV6YufANuKlNgjySIVBoBHo2QJVR/MnpHeuAAAAFXNzaDpta29ldHRlci0xODY5MTU0OQ=="
       ];
       extraGroups = [ "wheel" ];
-      initialPassword = "correcthorsebatterystaple";
+      initialPassword = defaultPassword;
     };
   };
 }
