@@ -8,7 +8,7 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-amd
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     ./hardware.nix
 
     inputs.disko.nixosModules.disko
@@ -18,10 +18,10 @@
     ../common/users/michael
   ];
 
-  #common.linux.bootloader.secureboot = true;
+  common.linux.bootloader.secureboot = true;
   common.linux.desktop.enable = true;
 
-  #disko.devices.disk.main.device = "/dev/nvme0n1";
+  disko.devices.disk.main.device = "/dev/nvme1n1";
 
   environment.systemPackages = with pkgs; [
   ];
