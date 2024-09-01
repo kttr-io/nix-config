@@ -11,6 +11,7 @@ let
   terminal = config.home.common.linux-desktop.terminal.terminal;
 
   cursor = config.home.pointerCursor.name;
+  
   rofiRbwEnabled = config.home.common.global.bitwarden.enable
     && config.home.common.linux-desktop.rofi.enable;
 in
@@ -18,6 +19,11 @@ in
 
   options.home.common.linux-desktop.hyprland = {
     enable = lib.mkEnableOption "Hyprland module";
+    nvidia = lib.mkOption {
+      description = "NVIDIA support";
+      type = lib.types.bool;
+      default = false;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -48,10 +54,20 @@ in
       # to be extended by host specific per-device config...
       device = [ ];
 
+      cursor = {
+        no_hardware_cursors = cfg.nvidia;
+      };
+
       env = [
         "XCURSOR_THEME,${cursor}"
         "XCURSOR_SIZE,24"
-      ];
+      ]
+      ++ (lib.optionals (cfg.nvidia) [
+        "LIBVA_DRIVER_NAME,nvidia"
+        "XDG_SESSION_TYPE,wayland"
+        "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      ]);
 
       exec-once = [
         "waybar"

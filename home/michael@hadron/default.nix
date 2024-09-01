@@ -12,6 +12,7 @@
   ];
 
   home.common.linux-desktop.enable = true;
+  home.common.linux-desktop.hyprland.nvidia = true;
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
