@@ -3,7 +3,7 @@
 , config
 , pkgs
 , ...
-}: 
+}:
 let
   defaultPassword = "correcthorsebatterystaple";
 in

@@ -48,7 +48,7 @@ in
       viAlias = true;
       defaultEditor = true;
     };
-    
+
     services.ssh-agent.enable = true;
   };
 }
