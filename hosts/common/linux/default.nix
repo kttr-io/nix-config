@@ -10,7 +10,7 @@
     ./bootloader.nix
     ./graphical-boot.nix
     ./zram.nix
-    ./desktop.nix
+    ./desktop
   ];
 
   users.users.root.hashedPassword = "!";
@@ -20,4 +20,5 @@
 
   time.timeZone = lib.mkDefault "Europe/Berlin";
 
+  programs.zsh.enable = true;
 }

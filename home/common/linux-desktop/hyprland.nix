@@ -5,13 +5,11 @@
 , ...
 }:
 let
-  pkgs-hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
-
   cfg = config.home.common.linux-desktop.hyprland;
   terminal = config.home.common.linux-desktop.terminal.terminal;
 
   cursor = config.home.pointerCursor.name;
-  
+
   rofiRbwEnabled = config.home.common.global.bitwarden.enable
     && config.home.common.linux-desktop.rofi.enable;
 in
@@ -28,12 +26,13 @@ in
 
   config = lib.mkIf cfg.enable {
 
+
     home.common.linux-desktop.waybar.enable = lib.mkDefault true;
     home.common.linux-desktop.rofi.enable = lib.mkDefault true;
     home.common.linux-desktop.swaync.enable = lib.mkDefault true;
 
     wayland.windowManager.hyprland.enable = true;
-    #    wayland.windowManager.hyprland.package = pkgs-hyprland.hyprland;
+
     wayland.windowManager.hyprland.settings = {
       source = [
         "submap.conf"
@@ -67,6 +66,7 @@ in
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "NVD_BACKEND,direct"
       ]);
 
       exec-once = [
@@ -136,6 +136,11 @@ in
         "blur, waybar"
         "xray 1, waybar"
       ];
+
+      # This seems to fix some flickering in Chromium/Brave etc
+      misc.vfr = !cfg.nvidia;
+
+      # debug.disable_logs = false;
     };
 
     xdg.configFile."hypr/submap.conf".text = ''

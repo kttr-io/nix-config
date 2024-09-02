@@ -18,6 +18,7 @@ in
       ];
       extraGroups = [ "wheel" ];
       initialPassword = defaultPassword;
+      shell = pkgs.zsh;
     };
   };
 }
