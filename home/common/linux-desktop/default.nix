@@ -7,10 +7,6 @@
 }:
 let
   cfg = config.home.common.linux-desktop;
-  chromiumFlags = [
-    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
-    "--gtk-version=4"
-  ];
 in
 {
   options.home.common.linux-desktop = {
@@ -36,7 +32,7 @@ in
     };
 
     home.packages = with pkgs; [
-      brave
+      
     ];
 
     home.common.linux-desktop.gnome.enable = lib.mkDefault true;

@@ -36,4 +36,8 @@
     ];
   };
 
+  home.packages = with pkgs; [
+    pkgs.unstable.jetbrains.idea-ultimate
+    zen-browser
+  ];
 }
