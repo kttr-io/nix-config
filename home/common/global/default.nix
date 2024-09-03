@@ -1,4 +1,5 @@
 { inputs
+, outputs
 , lib
 , config
 , pkgs
@@ -26,6 +27,13 @@ in
   ];
 
   config = {
+
+    nixpkgs = {
+      overlays = [
+        outputs.overlays.my-packages
+        outputs.overlays.unstable-packages
+      ];
+    };
 
     home.common.global.bitwarden.enable = lib.mkDefault true;
 

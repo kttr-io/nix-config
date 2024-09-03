@@ -7,7 +7,6 @@
 }:
 let
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
-  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   imports = [
@@ -20,7 +19,7 @@ in
 
   wayland.windowManager.hyprland = {
     # Use hyprland unstable, should improve NVIDIA situation
-    package = pkgs-unstable.hyprland;
+    package = pkgs.unstable.hyprland;
     #portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
 
     settings = {
@@ -36,4 +35,9 @@ in
       ];
     };
   };
+
+  home.packages = with pkgs; [
+    pkgs.unstable.jetbrains.idea-ultimate
+    zen-browser
+  ];
 }

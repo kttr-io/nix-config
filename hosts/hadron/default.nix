@@ -19,7 +19,6 @@ let
   };
 
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
-  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   imports = [
@@ -58,12 +57,18 @@ in
     enable = true;
 
     # Use hyprland unstable, should improve NVIDIA situation
-    package = pkgs-unstable.hyprland;
+    package = pkgs.unstable.hyprland;
 
     #This seems to be broken (as of 2024-09-02)
     # portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   system.stateVersion = "24.05";
 }

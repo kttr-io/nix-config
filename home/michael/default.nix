@@ -14,6 +14,8 @@ in
     ../common/global
   ];
 
+  nixpkgs.config.allowUnfreePredicate = (_: true);
+
   home.common.global.username = username;
   home.common.global.bitwarden.email = email;
 

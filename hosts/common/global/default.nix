@@ -1,4 +1,5 @@
 { inputs
+, outputs
 , lib
 , config
 , pkgs
@@ -8,4 +9,11 @@
     ./nix.nix
     inputs.sops-nix.nixosModules.sops
   ];
+
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.my-packages
+      outputs.overlays.unstable-packages
+    ];
+  };
 }

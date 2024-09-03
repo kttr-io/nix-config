@@ -1,4 +1,5 @@
 { inputs
+, outputs
 , lib
 , config
 , pkgs
@@ -13,6 +14,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+
+    nixpkgs = {
+      overlays = [
+        outputs.overlays.chromium-flags
+      ];
+    };
+
     common.linux.graphical-boot.enable = lib.mkDefault true;
 
     environment.systemPackages = with pkgs; [
@@ -30,6 +38,8 @@ in
       desktopManager.gnome.enable = lib.mkDefault true;
     };
 
+    services.flatpak.enable = true;
+
     security.rtkit.enable = true;
     hardware.pulseaudio.enable = false;
     services.pipewire = {
@@ -40,6 +50,6 @@ in
     };
 
     programs.appimage.binfmt = true;
-
+    programs.yubikey-touch-detector.enable = true;
   };
 }

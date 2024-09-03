@@ -1,4 +1,5 @@
 { inputs
+, outputs
 , lib
 , config
 , pkgs
@@ -6,6 +7,10 @@
 }:
 let
   cfg = config.home.common.linux-desktop;
+  chromiumFlags = [
+    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
+    "--gtk-version=4"
+  ];
 in
 {
   options.home.common.linux-desktop = {
@@ -24,17 +29,14 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    nixpkgs = {
+      overlays = [
+        outputs.overlays.chromium-flags
+      ];
+    };
+
     home.packages = with pkgs; [
-      (brave.override {
-        commandLineArgs = [
-          "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
-        ];
-      })
-      (google-chrome.override {
-        commandLineArgs = [
-          "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
-        ];
-      })
+      brave
     ];
 
     home.common.linux-desktop.gnome.enable = lib.mkDefault true;

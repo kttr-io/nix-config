@@ -76,12 +76,15 @@ in
 
       bind =
         [
+          # Keyboard Binds
           "SUPER, RETURN, exec, ${terminal}"
           "SUPER, SPACE, exec, rofi -show drun"
           "SUPER SHIFT, SPACE, exec, rofi -show window"
 
           "SUPER, R, submap, resize"
-          "SUPER, ESCAPE, exit,"
+
+          "SUPER, Q, killactive"
+          "SUPER SHIFT, Q, exit,"
         ]
         ++ (lib.optionals (rofiRbwEnabled) [
           "SUPER, P, exec, rofi-rbw"
@@ -106,6 +109,12 @@ in
             )
             10)
         );
+
+      bindm = [
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
+        "SUPER SHIFT, mouse:273, resizewindow 1"
+      ];
 
       general = {
         gaps_in = 5;

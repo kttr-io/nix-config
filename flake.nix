@@ -62,6 +62,8 @@
     , ...
     } @ inputs:
     let
+      inherit (self) outputs;
+
       systems = [
         "aarch64-linux"
         "x86_64-linux"
@@ -93,12 +95,14 @@
       # Formatter for your nix files, available through 'nix fmt'
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
+      overlays = import ./overlays { inherit inputs; inherit (nixpkgs) lib; };
+
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = forAllNixosHosts (
         host:
         nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/${host}
             {
@@ -113,7 +117,7 @@
       darwinConfigurations = forAllDarwinHosts (
         host:
         nix-darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/${host}
             {
@@ -129,14 +133,21 @@
           # Available through 'home-manager --flake .#your-username'
           homeConfigurations = forAllUsers (
             user: home-manager.lib.homeManagerConfiguration {
-              pkgs = nixpkgs.legacyPackages.${system};
-              extraSpecialArgs = { inherit inputs; };
+              pkgs = import nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+              };
+              extraSpecialArgs = { inherit inputs outputs; };
               modules = [
                 ./home/${user}
               ];
             }
           );
         }
+        // import ./pkgs (import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        })
       );
     };
 }
