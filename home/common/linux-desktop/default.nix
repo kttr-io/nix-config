@@ -14,6 +14,7 @@ in
   };
 
   imports = [
+    ./fonts.nix
     ./gnome.nix
     ./hyprland.nix
     ./terminal.nix
@@ -21,6 +22,7 @@ in
     ./waybar
     ./rofi
     ./swaync
+    ./catppuccin
   ];
 
   config = lib.mkIf cfg.enable {
@@ -32,7 +34,7 @@ in
     };
 
     home.packages = with pkgs; [
-      
+
     ];
 
     home.common.linux-desktop.gnome.enable = lib.mkDefault true;

@@ -22,16 +22,5 @@ in
   home.common.global.git.userName = username_full;
   home.common.global.git.userEmail = email;
 
-  programs.bash.enable = true;
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    initExtra = ''
-      bindkey -e
-    '';
-  };
-
   home.stateVersion = "24.05";
 }

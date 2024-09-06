@@ -96,5 +96,5 @@ pkgs.stdenv.mkDerivation {
 
   meta.mainProgram = "zen";
 
-  meta.platforms = ["x86_64-linux"];
+  meta.platforms = [ "x86_64-linux" ];
 }

@@ -17,6 +17,11 @@ in
 
     programs.waybar = {
       enable = true;
+      catppuccin = {
+        enable = true;
+        mode = "createLink";
+      };
+
       settings = {
         mainBar = {
           layer = "top";
@@ -25,19 +30,20 @@ in
 
           modules-left = [
             "hyprland/window"
+            "sway/window"
           ];
           modules-center = [
             "hyprland/workspaces"
+            "sway/workspaces"
           ];
           modules-right = [
             "hyprland/submap"
-            "hyprland/language"
+            "sway/mode"
             "cpu"
             "pulseaudio"
             "battery"
             "network"
             "custom/swaync"
-            "clock#date"
             "clock"
           ];
 
@@ -47,18 +53,22 @@ in
             icon-size = 20;
           };
 
+          "sway/window" = {
+            separate-outputs = true;
+            icon = true;
+            icon-size = 20;
+          };
+
           "hyprland/workspaces" = {
             all-outputs = false;
           };
 
-          "hyprland/language" = {
-            format = "{} ";
-            format-en = "en";
-            format-de = "de";
+          "sway/workspaces" = {
+            all-outputs = false;
           };
 
           "cpu" = {
-            format = "{usage}% ";
+            format = "{usage:3}% ";
           };
 
           "pulseaudio" = {
@@ -79,16 +89,20 @@ in
           };
 
           "battery" = {
+            states = {
+              warning = 20;
+              critical = 10;
+            };
             interval = 10;
-            format = "{capacity}% {icon}";
+            format = "{capacity:3}% {icon}";
             format-icons = [ "" "" "" "" "" ];
-            format-full = "{capacity}% ";
-            format-charging = "{capacity}% ";
+            format-full = "{capacity:3}% ";
+            format-charging = "{capacity:3}% ";
           };
 
           "custom/swaync" = {
             "tooltip" = false;
-            "format" = "{} {icon}";
+            "format" = "{:>2} {icon}";
             "format-icons" = {
               "notification" = "";
               "none" = "";
@@ -107,8 +121,8 @@ in
             "escape" = true;
           };
 
-          "clock#date" = {
-            format = "{:%d. %b.}";
+          "clock" = {
+            format = "{:%d. %b.  %H:%M}";
           };
         };
       };

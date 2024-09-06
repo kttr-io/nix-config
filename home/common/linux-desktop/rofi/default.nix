@@ -26,7 +26,6 @@ in
     programs.rofi = {
       enable = true;
       package = cfg.package;
-      #theme = "spotlight-dark";
     };
 
     home.packages = with pkgs; lib.optionals (bitwardenEnabled) [

@@ -1,19 +1,23 @@
+@import "catppuccin.css";
+
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: monospace;
     font-size: 14px;
-    text-shadow: #000000 0 0 5px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    color: #ffffff;
+    background-color: @base;
+    color: @text;
     border: none;
 }
 
 label.module {
     padding: 0px 10px;
     margin: 0px 0px;
+}
+
+.modules-center {
+    margin-left: 30px;
 }
 
 .modules-left > widget:first-child > * {
@@ -43,13 +47,20 @@ button:hover {
     padding: 0 5px;
 }
 
-#workspaces button.active {
-    box-shadow: inset 0 -2px #ffffff;
+#workspaces button.active,
+#workspaces button.focused
+{
+    box-shadow: inset 0 -2px @text;
+}
+
+#workspaces button.urgent {
+    color: @peach;
 }
 
 #window,
 #workspaces,
 #submap,
+#mode,
 #language,
 #cpu,
 #battery,
@@ -60,10 +71,39 @@ button:hover {
     color: inherit;
 }
 
-label#submap {
-    background-color: #ffffff;
-    color: #000000;
-    text-shadow: none;
+label#submap,
+label#mode {
+    background-color: @text;
+    color: @base;
+    border-radius: 3px;
+    margin: 3px 0px;
+}
+
+@keyframes blink {
+    to {
+        color: @text;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.warning:not(.charging) {
+    color: coral;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 3px;
+    margin: 3px 0px;
+}
+
+#battery.critical:not(.charging) {
+    color: red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
     border-radius: 3px;
     margin: 3px 0px;
 }

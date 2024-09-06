@@ -21,12 +21,7 @@ in
   config = {
     programs.alacritty = {
       enable = cfg.terminal == "alacritty";
-      settings = {
-        window = {
-          opacity = 0.7;
-          blur = true;
-        };
-      };
+      settings = { };
     };
 
     programs.kitty.enable = cfg.terminal == "kitty";

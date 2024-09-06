@@ -27,11 +27,6 @@ in
       pavucontrol
     ];
 
-    fonts.packages = with pkgs; [
-      font-awesome
-      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-    ];
-
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = lib.mkDefault true;

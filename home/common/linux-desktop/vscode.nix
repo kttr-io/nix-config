@@ -6,18 +6,20 @@
 }:
 let
   cfg = config.home.common.linux-desktop.vscode;
+  monospaceFontFamiliesCSS = lib.strings.concatMapStringsSep "," lib.strings.escapeShellArg config.fonts.fontconfig.defaultFonts.monospace;
 in
 {
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
-    extensions = with pkgs; [
-      vscode-extensions.jnoortheen.nix-ide
+
+    extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
     ];
+
     userSettings = {
-      window.titleBarStyle = "custom";
-      editor.fontFamily = "'Source Code Pro','monospace',monospace,'Font Awesome 6 Free','Font Awesome 6 Free Solid','Font Awesome 6 Brands'";
+      editor.fontFamily = monospaceFontFamiliesCSS;
     };
   };
 }

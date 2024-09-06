@@ -21,6 +21,7 @@ in
   };
 
   imports = [
+    ./shell.nix
     ./git.nix
     ./bitwarden.nix
     ./pinentry.nix
