@@ -45,12 +45,17 @@ button:hover {
 
 #workspaces button {
     padding: 0 5px;
+    /* https://github.com/Alexays/Waybar/wiki/FAQ#workspace-buttons-are-too-wide-with-some-gtk-themes */
+    min-width: 20px;
 }
 
 #workspaces button.active,
 #workspaces button.focused
 {
-    box-shadow: inset 0 -2px @text;
+    background-color: @text;
+    color: @base;
+    border-radius: 3px;
+    margin: 3px 0px;
 }
 
 #workspaces button.urgent {
@@ -93,8 +98,6 @@ label#mode {
     animation-timing-function: steps(10);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    border-radius: 3px;
-    margin: 3px 0px;
 }
 
 #battery.critical:not(.charging) {
@@ -104,6 +107,4 @@ label#mode {
     animation-timing-function: steps(10);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    border-radius: 3px;
-    margin: 3px 0px;
 }

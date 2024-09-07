@@ -17,6 +17,7 @@ in
     ./fonts.nix
     ./gnome.nix
     ./hyprland.nix
+    ./sway.nix
     ./terminal.nix
     ./vscode.nix
     ./waybar
@@ -34,11 +35,56 @@ in
     };
 
     home.packages = with pkgs; [
-
     ];
 
     home.common.linux-desktop.gnome.enable = lib.mkDefault true;
     home.common.linux-desktop.hyprland.enable = lib.mkDefault true;
+    home.common.linux-desktop.sway.enable = lib.mkDefault true;
+
+    dconf = {
+      enable = true;
+      settings = {
+        # enable fractional scaling
+        "org/gnome/mutter" = {
+          experimental-features = [ "scale-monitor-framebuffer" ];
+        };
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
+      };
+    };
+
+    gtk = {
+      enable = true;
+      theme.name = "Adwaita";
+
+      gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+
+      gtk4.extraConfig = {
+        gtk-theme-name = "Default";
+      };
+    };
+
+    services.darkman = {
+      enable = true;
+      settings = {
+        usegeoclue = false;
+      };
+    };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        darkman
+      ];
+      configPackages = with pkgs; [
+        xdg-desktop-portal-gtk
+        darkman
+      ];
+    };
 
     home.pointerCursor = {
       # This works better for fractional scaling because it includes more sizes (eg. 72x72)

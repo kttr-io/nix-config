@@ -168,5 +168,19 @@ in
       # will reset the submap, which will return to the global submap
       submap = reset
     '';
+
+    xdg.portal = {
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+      ];
+      configPackages = with pkgs; [
+        xdg-desktop-portal-hyprland
+      ];
+      config.hyprland = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
+      };
+    };
+
   };
 }

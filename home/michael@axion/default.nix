@@ -38,33 +38,22 @@
   };
 
   wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    
     config = {
-      modifier = "Mod4";
-      terminal = "alacritty";
-      menu = "rofi -show drun";
-
-      bars = [{ command = "waybar"; }];
-
-      window.titlebar = false;
-
-      output = {
-        # XPS 13 9370, 4K Screen
-        # use 1080p to save some battery...
-        "Sharp Corporation 0x148B Unknown" = {
-          scale = "1.25";
-          mode = "--custom 1920x1080@60Hz";
-          position = "3840 0";
-        };
-        # LG Ultrawide 38"
-        "LG Electronics LG ULTRAWIDE 0x00001212" = {
-          scale = "1";
-          mode = "3840x1600@60Hz";
-          position = "0 0";
-        };
-      };
+      # output = {
+      #   # XPS 13 9370, 4K Screen
+      #   # use 1080p to save some battery...
+      #   "Sharp Corporation 0x148B Unknown" = {
+      #     scale = "1.25";
+      #     mode = "--custom 1920x1080@60Hz";
+      #     position = "3840 0";
+      #   };
+      #   # LG Ultrawide 38"
+      #   "LG Electronics LG ULTRAWIDE 0x00001212" = {
+      #     scale = "1";
+      #     mode = "3840x1600@60Hz";
+      #     position = "0 0";
+      #   };
+      # };
 
       input = {
         # XPS 13 internal Keyboard
@@ -97,4 +86,37 @@
   # TODO I don't like the default catppuccin rofi theme 
   programs.rofi.catppuccin.enable = false;
   programs.rofi.theme = "Arc-Dark";
+
+  services.kanshi.settings = [
+    {
+      profile = {
+        name = "undocked";
+        outputs = [
+          { 
+            criteria = "eDP-1"; 
+            mode = "--custom 1920x1080@60Hz";
+            scale = 1.25;
+          }
+        ];
+      };
+    }
+    {
+      profile = {
+        name = "docked-home";
+        outputs = [
+          { 
+            criteria = "LG Electronics LG ULTRAWIDE 0x00001212"; 
+            mode = "3840x1600@60Hz";
+            position = "0,0";
+          }
+          { 
+            criteria = "eDP-1"; 
+            mode = "--custom 1920x1080@60Hz";
+            scale = 1.25;
+            position = "3840,0";
+          }
+        ];
+      };
+    }
+  ];
 }
