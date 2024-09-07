@@ -7,6 +7,7 @@
 let
   cfg = config.home.common.linux-desktop.sway;
   terminal = config.home.common.linux-desktop.terminal.terminal;
+  pkgs-wayland = inputs.wayland.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
 
@@ -33,6 +34,7 @@ in
 
     wayland.windowManager.sway = {
       enable = true;
+      package = null; # use global package
       wrapperFeatures.gtk = true;
 
       config = rec {

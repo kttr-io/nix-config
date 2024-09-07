@@ -19,6 +19,7 @@ let
   };
 
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
+  pkgs-wayland = inputs.wayland.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   imports = [
@@ -61,6 +62,20 @@ in
 
     #This seems to be broken (as of 2024-09-02)
     # portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
+  };
+
+  programs.sway = {
+    enable = true;
+
+    extraOptions =
+      [
+        "--unsupported-gpu"
+      ];
+
+    # Use nixpkgs-wayland package, should improve NVIDIA situation
+    package = pkgs.sway.override (previous: {
+      sway-unwrapped = pkgs-wayland.sway-unwrapped;
+    });
   };
 
   programs.steam = {

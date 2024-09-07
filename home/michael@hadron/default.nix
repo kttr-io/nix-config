@@ -16,12 +16,9 @@ in
 
   home.common.linux-desktop.enable = true;
   home.common.linux-desktop.hyprland.nvidia = true;
+  home.common.linux-desktop.sway.nvidia = true;
 
   wayland.windowManager.hyprland = {
-    # Use hyprland unstable, should improve NVIDIA situation
-    package = pkgs.unstable.hyprland;
-    #portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
-
     settings = {
       monitor = [
         # LG Ultrawide 38"
@@ -37,7 +34,46 @@ in
   };
 
   home.packages = with pkgs; [
-    pkgs.unstable.jetbrains.idea-ultimate
+    brave
+    firefox
     zen-browser
+    pkgs.unstable.jetbrains.idea-ultimate
+  ];
+
+  catppuccin.enable = true;
+
+  # TODO I don't like the default catppuccin rofi theme 
+  programs.rofi.catppuccin.enable = false;
+  programs.rofi.theme = "Arc-Dark";
+
+  services.kanshi.settings = [
+    {
+      profile = {
+        name = "dualscreen";
+        outputs = [
+          {
+            criteria = "LG Electronics LG ULTRAWIDE 0x00001212";
+            position = "0,0";
+          }
+          {
+            criteria = "Dell Inc. DELL U2713H C6F0K43T0P3L";
+            # above LG Ultrawide
+            position = "640,-1440";
+          }
+        ];
+      };
+    }
+    {
+      profile = {
+        name = "single";
+        outputs = [
+          {
+            criteria = "*";
+            position = "0,0";
+          }
+        ];
+      };
+    }
+
   ];
 }
