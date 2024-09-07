@@ -11,9 +11,11 @@ window#waybar {
     border: none;
 }
 
-label.module {
+label.module,
+button.module {
     padding: 0px 10px;
     margin: 0px 0px;
+    min-width: 20px;
 }
 
 .modules-center {
@@ -68,10 +70,12 @@ button:hover {
 #mode,
 #language,
 #cpu,
+#bluetooth,
 #battery,
 #network,
 #pulseaudio,
-#clock {
+#clock,
+#custom-swaync {
     background-color: transparent;
     color: inherit;
 }
@@ -82,6 +86,18 @@ label#mode {
     color: @base;
     border-radius: 3px;
     margin: 3px 0px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off,
+#custom-swaync.none,
+#custom-swaync.dnd-none,
+#custom-swaync.inhibited-none,
+#custom-swaync.dnd-inhibited-none,
+#network.disabled,
+#network.disconnected,
+#network.linked {
+    color: @surface2;
 }
 
 @keyframes blink {

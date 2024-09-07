@@ -42,6 +42,7 @@ in
             "cpu"
             "pulseaudio"
             "battery"
+            "bluetooth"
             "network"
             "custom/swaync"
             "clock"
@@ -68,7 +69,8 @@ in
           };
 
           "cpu" = {
-            format = "{usage:3}% ";
+            interval = 3;
+            format = "{usage}% ";
           };
 
           "pulseaudio" = {
@@ -78,14 +80,25 @@ in
             format-icons = {
               default = [ "" "" "" ];
             };
+            on-click-right = "swayosd-client --output-volume mute-toggle";
+            on-scroll-up = "swayosd-client --output-volume +5";
+            on-scroll-down = "swayosd-client --output-volume -5";
           };
 
           "network" = {
-            format-wifi = "";
-            tooltip-format-wifi = "{essid} ({frequency} GHz, {signalStrength}%)";
+            format = "";
             format-ethernet = "";
+            tooltip-format-wifi = "{essid} ({frequency} GHz, {signalStrength}%)";
             tooltip-format-ethernet = "{ifname} ({bandwidthTotalBits})";
-            format-disconnected = "";
+            on-click-right = "rfkill toggle wifi";
+          };
+
+          "bluetooth" = {
+            format = "";
+            tooltip-format = "{controller_alias}\t{controller_address}";
+            tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+            tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+            on-click-right = "sleep 1; rfkill toggle bluetooth";
           };
 
           "battery" = {
@@ -94,15 +107,15 @@ in
               critical = 10;
             };
             interval = 10;
-            format = "{capacity:3}% {icon}";
+            format = "{capacity}% {icon}";
             format-icons = [ "" "" "" "" "" ];
-            format-full = "{capacity:3}% ";
-            format-charging = "{capacity:3}% ";
+            format-full = "{capacity}% ";
+            format-charging = "{capacity}% ";
           };
 
           "custom/swaync" = {
             "tooltip" = false;
-            "format" = "{:>2} {icon}";
+            "format" = "{icon}";
             "format-icons" = {
               "notification" = "";
               "none" = "";
