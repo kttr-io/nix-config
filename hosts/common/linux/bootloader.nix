@@ -43,6 +43,7 @@ in
         if cfg.secureboot
         then lib.mkForce false
         else lib.mkDefault true;
+      consoleMode = "auto";
     };
 
     boot.initrd.systemd = {

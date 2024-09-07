@@ -42,17 +42,15 @@
       # output = {
       #   # XPS 13 9370, 4K Screen
       #   # use 1080p to save some battery...
-      #   "Sharp Corporation 0x148B Unknown" = {
+      #   "eDP-1" = {
       #     scale = "1.25";
       #     mode = "--custom 1920x1080@60Hz";
-      #     position = "3840 0";
+      #     position = "3840 736";
       #   };
-      #   # LG Ultrawide 38"
       #   "LG Electronics LG ULTRAWIDE 0x00001212" = {
-      #     scale = "1";
       #     mode = "3840x1600@60Hz";
       #     position = "0 0";
-      #   };
+      #   }
       # };
 
       input = {
@@ -70,6 +68,7 @@
         "1267:9454:ELAN24EE:00_04F3:24EE" = {
           events = "disabled";
         };
+
       };
     };
   };
@@ -89,31 +88,65 @@
 
   services.kanshi.settings = [
     {
+      output = {
+        # FIXME currently, custom modes don't work with lid-closed/lid-opened
+        # https://todo.sr.ht/~emersion/kanshi/80#event-347753
+        # https://github.com/swaywm/sway/issues/7868
+        criteria = "eDP-1";
+        mode = "3840x2160@60Hz";
+        scale = 2.5;
+        status = "enable";
+      };
+    }
+    {
       profile = {
-        name = "undocked";
+        name = "lid-opened";
         outputs = [
           { 
+            criteria = "LG Electronics LG ULTRAWIDE 0x00001212"; 
+            position = "0,0";
+          }
+          { 
             criteria = "eDP-1"; 
-            mode = "--custom 1920x1080@60Hz";
-            scale = 1.25;
+            # right-bottom of LG Ultrawide
+            position = "3840,736";
           }
         ];
       };
     }
     {
       profile = {
-        name = "docked-home";
+        name = "lid-opened";
+        outputs = [
+          { 
+            criteria = "eDP-1"; 
+            position = "0,0";
+          }
+        ];
+      };
+    }
+    {
+      profile = {
+        name = "lid-closed";
         outputs = [
           { 
             criteria = "LG Electronics LG ULTRAWIDE 0x00001212"; 
-            mode = "3840x1600@60Hz";
             position = "0,0";
           }
           { 
             criteria = "eDP-1"; 
-            mode = "--custom 1920x1080@60Hz";
-            scale = 1.25;
-            position = "3840,0";
+            status = "disable";
+          }
+        ];
+      };
+    }   
+    {
+      profile = {
+        name = "lid-closed";
+        outputs = [
+          { 
+            criteria = "eDP-1"; 
+            status = "disable";
           }
         ];
       };

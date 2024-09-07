@@ -29,6 +29,7 @@
 
   programs.hyprland.enable = true;
   programs.sway.enable = true;
+  programs.light.enable = true;
 
   console.keyMap = "de";
 
