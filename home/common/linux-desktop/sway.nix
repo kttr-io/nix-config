@@ -7,9 +7,6 @@
 let
   cfg = config.home.common.linux-desktop.sway;
   terminal = config.home.common.linux-desktop.terminal.terminal;
-
-  rofiRbwEnabled = config.home.common.global.bitwarden.enable
-    && config.home.common.linux-desktop.rofi.enable;
 in
 {
 
@@ -52,27 +49,18 @@ in
         ];
 
         keybindings = lib.mkOptionDefault {
+          "${modifier}+p" = "exec rofi-rbw";
+
           "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume raise";
           "XF86AudioLowerVolume" = "exec  swayosd-client --output-volume lower";
           "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
           "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
           "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
-
-          # This also happens to be the 'mirror screen' key (Fn+F8) on XPS 13
-          "${modifier}+p" = "exec pkill wl-mirror || wl-mirror eDP-1";
         };
 
-        window.commands = [
-          {
-            # make wl-mirror fullscreen by default
-            criteria = { app_id = "at.yrlf.wl_mirror"; };
-            command = "fullscreen enable";
-          }
-          {
-            # make wl-mirror fullscreen by default
-            criteria = { app_id = "org.gnome.Calculator"; };
-            command = "floating enable";
-          }
+        floating.criteria = [
+          { app_id = "org.gnome.Calculator"; }
+          { app_id = "pavucontrol"; }
         ];
       };
 

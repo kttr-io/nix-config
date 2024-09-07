@@ -102,12 +102,12 @@
       profile = {
         name = "lid-opened";
         outputs = [
-          { 
-            criteria = "LG Electronics LG ULTRAWIDE 0x00001212"; 
+          {
+            criteria = "LG Electronics LG ULTRAWIDE 0x00001212";
             position = "0,0";
           }
-          { 
-            criteria = "eDP-1"; 
+          {
+            criteria = "eDP-1";
             # right-bottom of LG Ultrawide
             position = "3840,736";
           }
@@ -118,8 +118,8 @@
       profile = {
         name = "lid-opened";
         outputs = [
-          { 
-            criteria = "eDP-1"; 
+          {
+            criteria = "eDP-1";
             position = "0,0";
           }
         ];
@@ -129,23 +129,23 @@
       profile = {
         name = "lid-closed";
         outputs = [
-          { 
-            criteria = "LG Electronics LG ULTRAWIDE 0x00001212"; 
+          {
+            criteria = "LG Electronics LG ULTRAWIDE 0x00001212";
             position = "0,0";
           }
-          { 
-            criteria = "eDP-1"; 
+          {
+            criteria = "eDP-1";
             status = "disable";
           }
         ];
       };
-    }   
+    }
     {
       profile = {
         name = "lid-closed";
         outputs = [
-          { 
-            criteria = "eDP-1"; 
+          {
+            criteria = "eDP-1";
             status = "disable";
           }
         ];
