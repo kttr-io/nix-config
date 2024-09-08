@@ -1,8 +1,8 @@
 final: prev:
 let
   chromiumFlags = [
-    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
-    "--gtk-version=4"
+    "--enable-features=UseOzonePlatform,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
+    "--ozone-platform-hint=auto"
   ];
 
   chromiumPackages = [
