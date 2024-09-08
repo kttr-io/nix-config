@@ -10,6 +10,18 @@ in
 {
   options.home.common.linux-desktop.waybar = {
     enable = lib.mkEnableOption "Waybar module";
+    theme-colors = lib.mkOption {
+      description = "color theme for waybar";
+      type = lib.types.submodule {
+        options = {
+          background = lib.mkOption { type = lib.types.str; default = "@theme_bg_color"; };
+          text = lib.mkOption { type = lib.types.str; default = "@theme_text_color"; };
+          urgent = lib.mkOption { type = lib.types.str; default = "@warning_color"; };
+          warning = lib.mkOption { type = lib.types.str; default = "@warning_color"; };
+          error = lib.mkOption { type = lib.types.str; default = "@error_color"; };
+        };
+      };
+    };
   };
 
 
@@ -144,12 +156,12 @@ in
       style = ./style.css;
     };
 
-    xdg.configFile."waybar/theme.css".text = lib.mkDefault ''
-      @define-color background @theme_bg_color;
-      @define-color text @theme_text_color;
-      @define-color urgent @warning_color;
-      @define-color warning @warning_color;
-      @define-color error @error_color;
+    xdg.configFile."waybar/theme-colors.css".text = ''
+      @define-color background ${cfg.theme-colors.background};
+      @define-color text ${cfg.theme-colors.text};
+      @define-color urgent ${cfg.theme-colors.urgent};
+      @define-color warning ${cfg.theme-colors.warning};
+      @define-color error ${cfg.theme-colors.error};
     '';
   };
 }

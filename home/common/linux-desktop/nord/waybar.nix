@@ -4,14 +4,21 @@
 , pkgs
 , ...
 }:
+let
+  cfg = config.home.common.linux-desktop.nord.waybar;
+in
 {
-  config = {
-    xdg.configFile."waybar/theme.css".text = ''
-      @define-color background #2e3440;
-      @define-color text #eceff4;
-      @define-color urgent #ebcb8b;
-      @define-color warning #d08770;
-      @define-color error #bf616a;
-    '';
+  options.home.common.linux-desktop.nord.waybar = {
+    enable = lib.mkEnableOption "nord theme for waybar";
+  };
+
+  config = lib.mkIf cfg.enable {
+    home.common.linux-desktop.waybar.theme-colors = {
+      background = "#2e3440";
+      text = "#eceff4";
+      urgent = "#ebcb8b";
+      warning = "#d08770";
+      error = "#bf616a";
+    };
   };
 }

@@ -12,6 +12,7 @@
   ];
 
   home.common.linux-desktop.enable = true;
+  home.common.linux-desktop.nord.enable = true;
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
@@ -79,12 +80,6 @@
     zen-browser
     pkgs.unstable.jetbrains.idea-ultimate
   ];
-
-  catppuccin.enable = true;
-
-  # TODO I don't like the default catppuccin rofi theme 
-  programs.rofi.catppuccin.enable = false;
-  programs.rofi.theme = "Arc-Dark";
 
   services.kanshi.settings = [
     {

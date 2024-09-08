@@ -4,8 +4,15 @@
 , pkgs
 , ...
 }:
+let
+  cfg = config.home.common.linux-desktop.nord.alacritty;
+in
 {
-  config = {
+  options.home.common.linux-desktop.nord.alacritty = {
+    enable = lib.mkEnableOption "nord theme for alacritty";
+  };
+
+  config = lib.mkIf cfg.enable {
     programs.alacritty.settings = {
 
       # converted from https://github.com/nordtheme/alacritty/blob/main/src/nord.yaml

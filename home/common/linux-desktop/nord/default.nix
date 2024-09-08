@@ -6,8 +6,7 @@
 }:
 let
   cfg = config.home.common.linux-desktop.nord;
-in
-{
+in {
   options.home.common.linux-desktop.nord = {
     enable = lib.mkEnableOption "Nord Theme";
   };
@@ -21,6 +20,14 @@ in
   ];
 
   config = lib.mkIf cfg.enable {
+
+    home.common.linux-desktop.nord = {
+      alacritty.enable = lib.mkDefault true;
+      i3-sway.enable = lib.mkDefault true;
+      rofi.enable = lib.mkDefault true;
+      vscode.enable = lib.mkDefault true;
+      waybar.enable = lib.mkDefault true;
+    };
 
     gtk = {
       enable = true;

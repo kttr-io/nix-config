@@ -5,6 +5,8 @@
 , ...
 }:
 let
+  cfg = config.home.common.linux-desktop.nord.i3-sway;
+
   extraConfig = ''
     set $nord0 #2E3440
     set $nord1 #3B4252
@@ -34,7 +36,11 @@ let
 
 in
 {
-  config = {
+  options.home.common.linux-desktop.nord.i3-sway = {
+    enable = lib.mkEnableOption "nord theme for i3/sway";
+  };
+
+  config = lib.mkIf cfg.enable {
     xsession.windowManager.i3.extraConfig = extraConfig;
     wayland.windowManager.sway.extraConfig = extraConfig;
   };
