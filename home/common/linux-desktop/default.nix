@@ -24,6 +24,7 @@ in
     ./rofi
     ./swaync
     ./catppuccin
+    ./nord
   ];
 
   config = lib.mkIf cfg.enable {
@@ -48,22 +49,6 @@ in
         "org/gnome/mutter" = {
           experimental-features = [ "scale-monitor-framebuffer" ];
         };
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-        };
-      };
-    };
-
-    gtk = {
-      enable = true;
-      theme.name = "Adwaita";
-
-      gtk3.extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
-      };
-
-      gtk4.extraConfig = {
-        gtk-theme-name = "Default";
       };
     };
 

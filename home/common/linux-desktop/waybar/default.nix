@@ -144,5 +144,12 @@ in
       style = ./style.css;
     };
 
+    xdg.configFile."waybar/theme.css".text = lib.mkDefault ''
+      @define-color background @theme_bg_color;
+      @define-color text @theme_text_color;
+      @define-color urgent @warning_color;
+      @define-color warning @warning_color;
+      @define-color error @error_color;
+    '';
   };
 }

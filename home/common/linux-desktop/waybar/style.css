@@ -1,4 +1,4 @@
-@import "catppuccin.css";
+@import "theme.css";
 
 * {
     font-family: monospace;
@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-    background-color: @base;
+    background-color: @background;
     color: @text;
     border: none;
 }
@@ -55,13 +55,13 @@ button:hover {
 #workspaces button.focused
 {
     background-color: @text;
-    color: @base;
+    color: @background;
     border-radius: 3px;
     margin: 3px 0px;
 }
 
 #workspaces button.urgent {
-    color: @peach;
+    color: @urgent;
 }
 
 #window,
@@ -83,7 +83,7 @@ button:hover {
 label#submap,
 label#mode {
     background-color: @text;
-    color: @base;
+    color: @background;
     border-radius: 3px;
     margin: 3px 0px;
 }
@@ -97,7 +97,7 @@ label#mode {
 #network.disabled,
 #network.disconnected,
 #network.linked {
-    color: @surface2;
+    opacity: 0.4;
 }
 
 @keyframes blink {
@@ -108,7 +108,7 @@ label#mode {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.warning:not(.charging) {
-    color: coral;
+    color:@warning;
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: steps(10);
@@ -117,7 +117,7 @@ label#mode {
 }
 
 #battery.critical:not(.charging) {
-    color: red;
+    color: @error;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(10);
