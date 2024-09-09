@@ -43,8 +43,7 @@ in
         menu = "rofi -show drun";
 
         input."*" = {
-          xkb_layout = "us";
-          xkb_variant = "intl";
+          xkb_layout = "us(intl)";
         };
 
         bars = [{ command = "waybar"; }];
