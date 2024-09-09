@@ -85,6 +85,19 @@ in
 
     services.swayosd.enable = true;
 
+    services.swayidle = {
+      enable = true;
+      events = [
+        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock"; }
+      ];
+    };
+    
+    programs.swaylock.enable = true;
+
+    programs.wlogout = {
+      enable = true;
+    };
+    
     xdg.portal = {
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr

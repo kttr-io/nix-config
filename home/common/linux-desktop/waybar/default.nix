@@ -78,6 +78,7 @@ in
             "custom/swaync"
             "tray"
             "clock"
+            "custom/power"
           ];
 
           "hyprland/window" = {
@@ -180,6 +181,12 @@ in
 
           "clock" = {
             format = "{:%d. %b.  %H:%M}";
+          };
+
+          "custom/power" = {
+              "format" = "⏻";
+              "tooltip" = false;
+              "on-click" = "wlogout";
           };
         };
       };
