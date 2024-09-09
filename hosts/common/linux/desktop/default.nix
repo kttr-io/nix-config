@@ -15,12 +15,6 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    nixpkgs = {
-      overlays = [
-        outputs.overlays.chromium-flags
-      ];
-    };
-
     common.linux.graphical-boot.enable = lib.mkDefault true;
 
     environment.systemPackages = with pkgs; [
@@ -46,6 +40,5 @@ in
     };
 
     programs.appimage.binfmt = true;
-    programs.yubikey-touch-detector.enable = true;
   };
 }

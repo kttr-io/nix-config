@@ -23,7 +23,7 @@ in
     programs.rofi = {
       theme = "${src}/nord.rasi";
       extraConfig = {
-        show-icons =     true;
+        show-icons = true;
       };
     };
   };

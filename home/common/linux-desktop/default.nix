@@ -20,6 +20,7 @@ in
     ./sway.nix
     ./terminal.nix
     ./vscode.nix
+    ./yubikey-touch-detector.nix
     ./waybar
     ./rofi
     ./swaync
@@ -29,13 +30,8 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    nixpkgs = {
-      overlays = [
-        outputs.overlays.chromium-flags
-      ];
-    };
-
     home.packages = with pkgs; [
+      yubioath-flutter
     ];
 
     home.common.linux-desktop.gnome.enable = lib.mkDefault true;

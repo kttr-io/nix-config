@@ -88,6 +88,19 @@ label#mode {
     margin: 3px 0px;
 }
 
+label#custom-waybar-yubikey {
+    background-color: @warning;
+
+    border-radius: 3px;
+    margin: 3px 0px;
+
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;    
+}
+
 #bluetooth.disabled,
 #bluetooth.off,
 #custom-swaync.none,
@@ -102,13 +115,14 @@ label#mode {
 
 @keyframes blink {
     to {
+        background-color: @background;
         color: @text;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.warning:not(.charging) {
-    color:@warning;
+    color: @warning;
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: steps(10);

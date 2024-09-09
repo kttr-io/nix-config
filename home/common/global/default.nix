@@ -49,6 +49,8 @@ in
       htop
       nixd
       nixpkgs-fmt
+      yubikey-manager
+      yubikey-personalization
     ];
 
     programs.home-manager.enable = true;

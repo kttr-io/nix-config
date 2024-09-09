@@ -21,4 +21,5 @@
   time.timeZone = lib.mkDefault "Europe/Berlin";
 
   programs.zsh.enable = true;
+  services.pcscd.enable = true;
 }

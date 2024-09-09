@@ -63,6 +63,7 @@ in
         floating.criteria = [
           { app_id = "org.gnome.Calculator"; }
           { app_id = "pavucontrol"; }
+          { app_id = "yubioath-flutter"; }
         ];
       };
 

@@ -6,6 +6,18 @@
 }:
 let
   cfg = config.home.common.linux-desktop.waybar;
+
+  waybar-yubikey-source = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/maximbaz/dotfiles/d64fc9bcd33831585149ac3bb86608ac54d1b5ff/.local/bin/waybar-yubikey";
+    hash = "sha256-WUrj1YPHY+MdqVTfFCVSKY7DsvmJ1blcREV2kMBch48=";
+  };
+
+  waybar-yubikey = pkgs.writeShellApplication {
+    name = "waybar-yubikey";
+    runtimeInputs = [ pkgs.bash ];
+    text = builtins.readFile waybar-yubikey-source;
+    excludeShellChecks = [ "SC2124" "SC2162" ];
+  };
 in
 {
   options.home.common.linux-desktop.waybar = {
@@ -26,6 +38,12 @@ in
 
 
   config = lib.mkIf cfg.enable {
+
+    home.common.linux-desktop.yubikey-touch-detector = {
+      enable = lib.mkDefault true;
+      libnotify = lib.mkDefault false;
+    };
+    
 
     programs.waybar = {
       enable = true;
@@ -51,6 +69,7 @@ in
           modules-right = [
             "hyprland/submap"
             "sway/mode"
+            "custom/waybar-yubikey"
             "cpu"
             "pulseaudio"
             "battery"
@@ -126,6 +145,12 @@ in
             format-charging = "{capacity}% ";
           };
 
+          "custom/waybar-yubikey" = {
+            "return-type" = "json";
+            "exec" = "${waybar-yubikey}/bin/waybar-yubikey";
+            "escape" = true;
+          };
+
           "custom/swaync" = {
             "tooltip" = false;
             "format" = "{icon}";
@@ -163,5 +188,6 @@ in
       @define-color warning ${cfg.theme-colors.warning};
       @define-color error ${cfg.theme-colors.error};
     '';
+
   };
 }

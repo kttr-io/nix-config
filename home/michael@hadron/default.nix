@@ -1,5 +1,6 @@
 # Dell XPS 13
 { inputs
+, outputs
 , lib
 , config
 , pkgs
@@ -12,6 +13,10 @@ in
   imports = [
     ../michael
     ../common/linux-desktop
+  ];
+
+  nixpkgs.overlays = [
+    outputs.overlays.chromium-flags.nvidiaWayland
   ];
 
   home.common.linux-desktop.enable = true;

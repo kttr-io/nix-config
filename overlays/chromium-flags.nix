@@ -1,14 +1,26 @@
-final: prev:
 let
-  chromiumFlags = [
-    "--enable-features=UseOzonePlatform,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
-    "--ozone-platform-hint=auto"
+  intelFlags = [
+    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
+  ];
+
+  nvidiaWaylandFlags = [
+    "--disable-gpu-compositing"
   ];
 
   chromiumPackages = [
+    # Chromium browsers
     "brave"
     "chromium"
     "google-chrome"
+
+    # Electron apps
+    "vscode"
   ];
+
+  mkChromiumFlags = flags: final: prev: prev.lib.genAttrs chromiumPackages (package: prev.${package}.override { commandLineArgs = flags; });
 in
-prev.lib.genAttrs chromiumPackages (package: prev.${package}.override { commandLineArgs = chromiumFlags; })
+{
+  intel = mkChromiumFlags intelFlags;
+  nvidiaWayland = mkChromiumFlags nvidiaWaylandFlags;
+}
+

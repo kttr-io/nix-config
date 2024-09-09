@@ -1,5 +1,6 @@
 # Dell XPS 13
 { inputs
+, outputs
 , lib
 , config
 , pkgs
@@ -9,6 +10,10 @@
   imports = [
     ../michael
     ../common/linux-desktop
+  ];
+
+  nixpkgs.overlays = [
+    outputs.overlays.chromium-flags.intel
   ];
 
   home.common.linux-desktop.enable = true;
