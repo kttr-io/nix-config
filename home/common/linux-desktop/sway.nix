@@ -42,6 +42,11 @@ in
         inherit terminal;
         menu = "rofi -show drun";
 
+        input."*" = {
+          xkb_layout = "us";
+          xkb_variant = "intl";
+        };
+
         bars = [{ command = "waybar"; }];
 
         window.titlebar = false;
@@ -64,6 +69,7 @@ in
           { app_id = "org.gnome.Calculator"; }
           { app_id = "pavucontrol"; }
           { app_id = "yubioath-flutter"; }
+          { app_id = "thunderbird"; title = "Reminder[s]?"; }
         ];
       };
 

@@ -63,6 +63,7 @@
         # XPS 13 internal Keyboard
         "1:1:AT_Translated_Set_2_keyboard" = {
           xkb_layout = "de";
+          xkb_variant = "basic;
         };
 
         # XPS 13 touchpad
@@ -80,9 +81,6 @@
   };
 
   home.packages = with pkgs; [
-    brave
-    firefox
-    zen-browser
     pkgs.unstable.jetbrains.idea-ultimate
   ];
 

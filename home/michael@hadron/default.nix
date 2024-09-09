@@ -40,9 +40,6 @@ in
   };
 
   home.packages = with pkgs; [
-    brave
-    firefox
-    zen-browser
     pkgs.unstable.jetbrains.idea-ultimate
   ];
 

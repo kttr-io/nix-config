@@ -12,7 +12,8 @@ window#waybar {
 }
 
 label.module,
-button.module {
+button.module,
+box.module {
     padding: 0px 10px;
     margin: 0px 0px;
     min-width: 20px;
