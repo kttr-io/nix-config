@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.vscode;
+  cfg = config.home.common.linux.desktop.vscode;
   monospaceFontFamiliesCSS = lib.strings.concatMapStringsSep "," lib.strings.escapeShellArg config.fonts.fontconfig.defaultFonts.monospace;
 in
 {

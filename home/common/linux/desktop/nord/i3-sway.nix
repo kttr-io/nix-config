@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.nord.i3-sway;
+  cfg = config.home.common.linux.desktop.nord.i3-sway;
 
   extraConfig = ''
     set $nord0 #2E3440
@@ -36,7 +36,7 @@ let
 
 in
 {
-  options.home.common.linux-desktop.nord.i3-sway = {
+  options.home.common.linux.desktop.nord.i3-sway = {
     enable = lib.mkEnableOption "nord theme for i3/sway";
   };
 

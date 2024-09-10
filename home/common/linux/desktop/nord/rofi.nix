@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.nord.rofi;
+  cfg = config.home.common.linux.desktop.nord.rofi;
 
   src = pkgs.fetchFromGitHub {
     owner = "undiabler";
@@ -15,7 +15,7 @@ let
   };
 in
 {
-  options.home.common.linux-desktop.nord.rofi = {
+  options.home.common.linux.desktop.nord.rofi = {
     enable = lib.mkEnableOption "nord theme for rofi";
   };
 

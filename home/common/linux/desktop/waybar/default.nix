@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.waybar;
+  cfg = config.home.common.linux.desktop.waybar;
 
   waybar-yubikey-source = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/maximbaz/dotfiles/d64fc9bcd33831585149ac3bb86608ac54d1b5ff/.local/bin/waybar-yubikey";
@@ -20,7 +20,7 @@ let
   };
 in
 {
-  options.home.common.linux-desktop.waybar = {
+  options.home.common.linux.desktop.waybar = {
     enable = lib.mkEnableOption "Waybar module";
     theme-colors = lib.mkOption {
       description = "color theme for waybar";
@@ -39,7 +39,7 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    home.common.linux-desktop.yubikey-touch-detector = {
+    home.common.linux.desktop.yubikey-touch-detector = {
       enable = lib.mkDefault true;
       libnotify = lib.mkDefault false;
     };

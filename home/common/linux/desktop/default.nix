@@ -6,10 +6,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop;
+  cfg = config.home.common.linux.desktop;
 in
 {
-  options.home.common.linux-desktop = {
+  options.home.common.linux.desktop = {
     enable = lib.mkEnableOption "Linux desktop module";
   };
 
@@ -38,9 +38,12 @@ in
       yubioath-flutter
     ];
 
-    home.common.linux-desktop.gnome.enable = lib.mkDefault true;
-    home.common.linux-desktop.hyprland.enable = lib.mkDefault true;
-    home.common.linux-desktop.sway.enable = lib.mkDefault true;
+    # linux (non-desktop) module should always be enabled too
+    home.common.linux.enable = true;
+
+    home.common.linux.desktop.gnome.enable = lib.mkDefault true;
+    home.common.linux.desktop.hyprland.enable = lib.mkDefault true;
+    home.common.linux.desktop.sway.enable = lib.mkDefault true;
 
     dconf = {
       enable = true;

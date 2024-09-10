@@ -5,11 +5,11 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.rofi;
+  cfg = config.home.common.linux.desktop.rofi;
   bitwardenEnabled = config.home.common.global.bitwarden.enable;
 in
 {
-  options.home.common.linux-desktop.rofi = {
+  options.home.common.linux.desktop.rofi = {
     enable = lib.mkEnableOption "rofi module";
     package = lib.mkOption
       {

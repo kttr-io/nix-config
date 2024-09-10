@@ -5,10 +5,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.nord.vscode;
+  cfg = config.home.common.linux.desktop.nord.vscode;
 in
 {
-  options.home.common.linux-desktop.nord.vscode = {
+  options.home.common.linux.desktop.nord.vscode = {
     enable = lib.mkEnableOption "nord theme for vscode";
   };
 

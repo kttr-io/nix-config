@@ -5,10 +5,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.swaync;
+  cfg = config.home.common.linux.desktop.swaync;
 in
 {
-  options.home.common.linux-desktop.swaync = {
+  options.home.common.linux.desktop.swaync = {
     enable = lib.mkEnableOption "swaync module";
   };
 

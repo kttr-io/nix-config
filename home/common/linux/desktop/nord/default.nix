@@ -5,9 +5,9 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.nord;
+  cfg = config.home.common.linux.desktop.nord;
 in {
-  options.home.common.linux-desktop.nord = {
+  options.home.common.linux.desktop.nord = {
     enable = lib.mkEnableOption "Nord Theme";
   };
 
@@ -21,7 +21,7 @@ in {
 
   config = lib.mkIf cfg.enable {
 
-    home.common.linux-desktop.nord = {
+    home.common.linux.desktop.nord = {
       alacritty.enable = lib.mkDefault true;
       i3-sway.enable = lib.mkDefault true;
       rofi.enable = lib.mkDefault true;

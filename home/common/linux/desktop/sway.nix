@@ -5,13 +5,13 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.sway;
-  terminal = config.home.common.linux-desktop.terminal.terminal;
+  cfg = config.home.common.linux.desktop.sway;
+  terminal = config.home.common.linux.desktop.terminal.terminal;
   pkgs-wayland = inputs.wayland.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
 
-  options.home.common.linux-desktop.sway = {
+  options.home.common.linux.desktop.sway = {
     enable = lib.mkEnableOption "sway module";
     nvidia = lib.mkOption {
       description = "NVIDIA support";
@@ -23,9 +23,9 @@ in
   config = lib.mkIf cfg.enable {
 
 
-    home.common.linux-desktop.waybar.enable = lib.mkDefault true;
-    home.common.linux-desktop.rofi.enable = lib.mkDefault true;
-    home.common.linux-desktop.swaync.enable = lib.mkDefault true;
+    home.common.linux.desktop.waybar.enable = lib.mkDefault true;
+    home.common.linux.desktop.rofi.enable = lib.mkDefault true;
+    home.common.linux.desktop.swaync.enable = lib.mkDefault true;
 
     home.packages = with pkgs; [
       wl-mirror

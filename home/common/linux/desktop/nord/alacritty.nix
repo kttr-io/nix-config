@@ -5,10 +5,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.nord.alacritty;
+  cfg = config.home.common.linux.desktop.nord.alacritty;
 in
 {
-  options.home.common.linux-desktop.nord.alacritty = {
+  options.home.common.linux.desktop.nord.alacritty = {
     enable = lib.mkEnableOption "nord theme for alacritty";
   };
 

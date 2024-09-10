@@ -5,13 +5,13 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.hyprland;
-  terminal = config.home.common.linux-desktop.terminal.terminal;
+  cfg = config.home.common.linux.desktop.hyprland;
+  terminal = config.home.common.linux.desktop.terminal.terminal;
 
   cursor = config.home.pointerCursor.name;
 
   rofiRbwEnabled = config.home.common.global.bitwarden.enable
-    && config.home.common.linux-desktop.rofi.enable;
+    && config.home.common.linux.desktop.rofi.enable;
 
   # Use nixpkgs-unstable package, should improve NVIDIA situation
   hyprland =
@@ -21,7 +21,7 @@ let
 in
 {
 
-  options.home.common.linux-desktop.hyprland = {
+  options.home.common.linux.desktop.hyprland = {
     enable = lib.mkEnableOption "Hyprland module";
     nvidia = lib.mkOption {
       description = "NVIDIA support";
@@ -33,9 +33,9 @@ in
   config = lib.mkIf cfg.enable {
 
 
-    home.common.linux-desktop.waybar.enable = lib.mkDefault true;
-    home.common.linux-desktop.rofi.enable = lib.mkDefault true;
-    home.common.linux-desktop.swaync.enable = lib.mkDefault true;
+    home.common.linux.desktop.waybar.enable = lib.mkDefault true;
+    home.common.linux.desktop.rofi.enable = lib.mkDefault true;
+    home.common.linux.desktop.swaync.enable = lib.mkDefault true;
 
     wayland.windowManager.hyprland = {
       enable = true;

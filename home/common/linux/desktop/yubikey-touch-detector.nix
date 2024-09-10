@@ -5,10 +5,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.yubikey-touch-detector;
+  cfg = config.home.common.linux.desktop.yubikey-touch-detector;
 in
 {
-  options.home.common.linux-desktop.yubikey-touch-detector = {
+  options.home.common.linux.desktop.yubikey-touch-detector = {
     enable = lib.mkEnableOption "yubikey-touch-detector module";
     libnotify = lib.mkOption {
       type = lib.types.bool;

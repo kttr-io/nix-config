@@ -12,17 +12,18 @@ in
 {
   imports = [
     ../michael
-    ../common/linux-desktop
+    ../common/linux
   ];
 
   nixpkgs.overlays = [
     outputs.overlays.chromium-flags.nvidiaWayland
   ];
 
-  home.common.linux-desktop.enable = true;
-  home.common.linux-desktop.hyprland.nvidia = true;
-  home.common.linux-desktop.sway.nvidia = true;
-  home.common.linux-desktop.nord.enable = true;
+  home.common.linux.java.enable = true;
+  home.common.linux.desktop.enable = true;
+  home.common.linux.desktop.hyprland.nvidia = true;
+  home.common.linux.desktop.sway.nvidia = true;
+  home.common.linux.desktop.nord.enable = true;
 
   wayland.windowManager.hyprland = {
     settings = {

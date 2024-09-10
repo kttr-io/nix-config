@@ -5,10 +5,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.gnome;
+  cfg = config.home.common.linux.desktop.gnome;
 in
 {
-  options.home.common.linux-desktop.gnome = {
+  options.home.common.linux.desktop.gnome = {
     enable = lib.mkEnableOption "GNOME module";
   };
 

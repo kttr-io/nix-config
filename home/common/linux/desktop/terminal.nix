@@ -5,10 +5,10 @@
 , ...
 }:
 let
-  cfg = config.home.common.linux-desktop.terminal;
+  cfg = config.home.common.linux.desktop.terminal;
 in
 {
-  options.home.common.linux-desktop.terminal = {
+  options.home.common.linux.desktop.terminal = {
     terminal = lib.mkOption {
       type = lib.types.enum [
         "alacritty"
