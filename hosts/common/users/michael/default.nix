@@ -21,4 +21,8 @@ in
       shell = pkgs.zsh;
     };
   };
+
+  nix.settings.trusted-users = [
+    "michael"
+  ];
 }

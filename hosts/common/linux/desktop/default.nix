@@ -40,5 +40,7 @@ in
     };
 
     programs.appimage.binfmt = true;
+
+    security.polkit.enable = true;
   };
 }
