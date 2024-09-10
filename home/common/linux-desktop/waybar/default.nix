@@ -74,9 +74,8 @@ in
             "pulseaudio"
             "battery"
             "bluetooth"
-            "network"
-            "custom/swaync"
             "tray"
+            "custom/swaync"
             "clock"
             "custom/power"
           ];
@@ -116,14 +115,6 @@ in
             on-click-right = "swayosd-client --output-volume mute-toggle";
             on-scroll-up = "swayosd-client --output-volume +5";
             on-scroll-down = "swayosd-client --output-volume -5";
-          };
-
-          "network" = {
-            format = "";
-            format-ethernet = "";
-            tooltip-format-wifi = "{essid} ({frequency} GHz, {signalStrength}%)";
-            tooltip-format-ethernet = "{ifname} ({bandwidthTotalBits})";
-            on-click-right = "rfkill toggle wifi";
           };
 
           "bluetooth" = {

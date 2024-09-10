@@ -68,7 +68,23 @@ in
           { app_id = "org.gnome.Calculator"; }
           { app_id = "pavucontrol"; }
           { app_id = "yubioath-flutter"; }
-          { app_id = "thunderbird"; title = "Reminder[s]?"; }
+          { app_id = "nm-connection-editor"; }
+        ];
+
+        window.commands = [
+
+          # Thundebird main window should be normal, while any other Thunderbird windows should be floating
+          # assuming the most specific criteria is matched (TODO needs to be verified)
+          {
+            # This is the main window
+            criteria = { app_id = "thunderbird"; title = "^.+ - Mozilla Thunderbird$"; };
+            command = "floating disable";
+          }
+          {
+            # These are other windows
+            criteria = { app_id = "thunderbird"; };
+            command = "floating enable";
+          }
         ];
       };
 
@@ -77,6 +93,10 @@ in
         bindswitch --locked lid:on exec kanshictl switch lid-closed
       '';
     };
+
+    services.gnome-keyring.enable = true;
+
+    services.network-manager-applet.enable = true;
 
     services.kanshi = {
       enable = true;

@@ -33,6 +33,7 @@ in
     home.packages = with pkgs; [
       brave
       firefox
+      gnome-online-accounts-gtk
       thunderbird
       yubioath-flutter
     ];
