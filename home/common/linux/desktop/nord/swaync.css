@@ -1,0 +1,156 @@
+/* 
+    FIXME this needs more work
+*/
+
+@define-color nord0 #2E3440;
+@define-color nord1 #3B4252;
+@define-color nord2 #434C5E;
+@define-color nord3 #4C566A;
+@define-color nord4 #D8DEE9;
+@define-color nord5 #E5E9F0;
+@define-color nord6 #ECEFF4;
+@define-color nord7 #8FBCBB;
+@define-color nord8 #88C0D0;
+@define-color nord9 #81A1C1;
+@define-color nord10 #5E81AC;
+@define-color nord11 #BF616A;
+@define-color nord12 #D08770;
+@define-color nord13 #EBCB8B;
+@define-color nord14 #A3BE8C;
+@define-color nord15 #B48EAD;
+
+* {
+    all: unset;
+    font-size: 14px;
+    font-family: monospace;
+    transition: 200ms;
+}
+
+.notification-row .notification-background {
+    margin: 5px;
+    padding: 0;
+}
+
+.notification-row .notification-background .notification {
+    background-color: @nord1;
+    color: @nord6;
+    padding: 5px;
+    border: 1px solid @nord7;
+}
+
+.notification-row .notification-background .notification.critical {
+    border: 1px solid @nord13;
+}
+
+.floating-notifications .notification-row .notification-background .notification {
+    margin: 7px;
+    box-shadow: 0 0 7px @nord0;
+}
+
+.notification-row .notification-background .notification .notification-content {
+    margin: 5px;
+}
+
+.notification-row .notification-background .notification .notification-content .time {
+    color: @nord4;
+}
+
+.notification-row .notification-background .notification>*:last-child>* {
+    min-height: 3.4em;
+}
+
+.notification-row .notification-background .notification>*:last-child>* .notification-action {
+    border-radius: 5px;
+    /* color: @nord6; */
+    background-color: @nord1;
+    border: 1px solid @nord3;
+    margin: 7px;
+}
+
+.notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+    background-color: @nord2;
+    border: 1px solid @nord3;
+}
+
+
+.notification-row .notification-background .close-button {
+    margin: 7px;
+    padding: 2px;
+    border-radius: 5px;
+    color: @nord6;
+    background-color: @nord3;
+}
+
+.notification-row .notification-background .close-button:hover {
+    background-color: @nord11;
+    color: @nord6;
+}
+
+.notification-row .notification-background .close-button:active {
+    background-color: @nord11;
+    color: @nord6;
+}
+
+.control-center {
+    margin: 7px;
+    box-shadow: 0 0 7px @nord0;
+    background-color: @nord0;
+    color: @nord6;
+    padding: 14px;
+    border: 1px solid @nord8;
+}
+
+.control-center .widget-title>label {
+    /* color: #cdd6f4; */
+    font-size: 1.3em;
+}
+
+.control-center .widget-title button {
+    border-radius: 5px;
+    background-color: @nord1;
+    border: 1px solid @nord3;
+    padding: 8px;
+}
+
+.control-center .widget-title button:hover {
+    /* box-shadow: inset 0 0 0 1px #45475a; */
+    background-color: @nord2;
+    border: 1px solid @nord3;
+    /* color: #cdd6f4; */
+}
+
+.notification.critical progress {
+    background-color: @nord13;
+}
+
+.notification.low progress,
+.notification.normal progress {
+    background-color: @nord7;
+}
+
+.control-center-dnd {
+    margin-top: 10px;
+}
+
+.control-center .widget-dnd {
+    margin: 0px;
+    font-size: 1.1rem;
+}
+
+.control-center .widget-dnd>switch {
+    font-size: initial;
+    border-radius: 5px;
+    background-color: @nord1;
+    border: 1px solid @nord3;
+    box-shadow: none;
+}
+
+.control-center .widget-dnd>switch:checked {
+    background-color: @nord1;
+}
+
+.control-center .widget-dnd>switch slider {
+    background-color: @nord0;
+    border-radius: 5px;
+    border: 1px solid @nord3;
+}

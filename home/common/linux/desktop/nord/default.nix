@@ -15,6 +15,7 @@ in {
     ./alacritty.nix
     ./i3-sway.nix
     ./rofi.nix
+    ./swaync.nix
     ./vscode.nix
     ./waybar.nix
   ];
@@ -25,6 +26,7 @@ in {
       alacritty.enable = lib.mkDefault true;
       i3-sway.enable = lib.mkDefault true;
       rofi.enable = lib.mkDefault true;
+      swaync.enable = lib.mkDefault true;
       vscode.enable = lib.mkDefault true;
       waybar.enable = lib.mkDefault true;
     };
