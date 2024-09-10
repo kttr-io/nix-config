@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    ../common/global
+    ../common
   ];
 
   nixpkgs.config.allowUnfreePredicate = (_: true);

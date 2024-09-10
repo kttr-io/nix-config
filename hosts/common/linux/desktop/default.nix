@@ -42,5 +42,11 @@ in
     programs.appimage.binfmt = true;
 
     security.polkit.enable = true;
+
+    programs.sway = {
+      extraSessionCommands = ''
+        source $HOME/.profile
+      '';
+    };
   };
 }

@@ -24,6 +24,7 @@ in
     ./shell.nix
     ./git.nix
     ./bitwarden.nix
+    ./nodejs.nix
     ./pinentry.nix
   ];
 
@@ -54,12 +55,13 @@ in
     ];
 
     programs.home-manager.enable = true;
+
+    programs.direnv.enable = true;
+    
     programs.neovim = {
       enable = true;
       viAlias = true;
       defaultEditor = true;
     };
-
-    services.ssh-agent.enable = true;
   };
 }

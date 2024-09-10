@@ -16,6 +16,11 @@
     outputs.overlays.chromium-flags.intel
   ];
 
+  # dev tools
+  home.common.linux.java.enable = true;
+  home.common.global.nodejs.enable = true;
+
+  # desktop
   home.common.linux.desktop.enable = true;
   home.common.linux.desktop.nord.enable = true;
 

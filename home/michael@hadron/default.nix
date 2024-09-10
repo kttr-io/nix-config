@@ -19,11 +19,17 @@ in
     outputs.overlays.chromium-flags.nvidiaWayland
   ];
 
+  # dev tools
   home.common.linux.java.enable = true;
+  home.common.global.nodejs.enable = true;
+
+  # desktop
   home.common.linux.desktop.enable = true;
+  home.common.linux.desktop.nord.enable = true;
+
+  # nvidia fixes
   home.common.linux.desktop.hyprland.nvidia = true;
   home.common.linux.desktop.sway.nvidia = true;
-  home.common.linux.desktop.nord.enable = true;
 
   wayland.windowManager.hyprland = {
     settings = {
