@@ -6,9 +6,10 @@
 }: {
   imports = [
     ../global
-    ./openssh.nix
     ./bootloader.nix
+    ./docker.nix
     ./graphical-boot.nix
+    ./openssh.nix
     ./zram.nix
     ./desktop
   ];

@@ -20,6 +20,7 @@
 
   common.linux.bootloader.secureboot = true;
   common.linux.desktop.enable = true;
+  common.linux.docker.enable = true;
 
   disko.devices.disk.main.device = "/dev/nvme0n1";
 
