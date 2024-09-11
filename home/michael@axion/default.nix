@@ -100,6 +100,10 @@
         status = "enable";
       };
     }
+
+    ##############################################################
+    # Home docked
+    ##############################################################
     {
       profile = {
         name = "lid-opened";
@@ -118,17 +122,6 @@
     }
     {
       profile = {
-        name = "lid-opened";
-        outputs = [
-          {
-            criteria = "eDP-1";
-            position = "0,0";
-          }
-        ];
-      };
-    }
-    {
-      profile = {
         name = "lid-closed";
         outputs = [
           {
@@ -138,6 +131,56 @@
           {
             criteria = "eDP-1";
             status = "disable";
+          }
+        ];
+      };
+    }
+
+    ##############################################################
+    # Office docked
+    ##############################################################
+    {
+      profile = {
+        name = "lid-opened";
+        outputs = [
+          {
+            criteria = "Dell Inc. DELL U2719DC 6Z8J7R2";
+            position = "0,0";
+          }
+          {
+            criteria = "eDP-1";
+            # right-bottom of Dell
+            position = "2560,576";
+          }
+        ];
+      };
+    }
+    {
+      profile = {
+        name = "lid-closed";
+        outputs = [
+          {
+            criteria = "Dell Inc. DELL U2719DC 6Z8J7R2";
+            position = "0,0";
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      };
+    }
+
+    ##############################################################
+    # Undocked
+    ##############################################################
+    {
+      profile = {
+        name = "lid-opened";
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "0,0";
           }
         ];
       };
