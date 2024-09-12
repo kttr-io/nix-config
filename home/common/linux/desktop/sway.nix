@@ -58,6 +58,8 @@ in
         keybindings = lib.mkOptionDefault {
           "${modifier}+p" = "exec rofi-rbw";
 
+          "${modifier}+q" = "kill";
+
           "${modifier}+Ctrl+Left" = "move container to output left";
           "${modifier}+Ctrl+Right" = "move container to output right";
           "${modifier}+Ctrl+Up" = "move container to output up";
