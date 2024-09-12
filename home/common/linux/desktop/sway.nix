@@ -38,6 +38,7 @@ in
       wrapperFeatures.gtk = true;
 
       config = rec {
+        # Super/Logo key
         modifier = "Mod4";
         inherit terminal;
         menu = "rofi -show drun";
@@ -56,6 +57,17 @@ in
 
         keybindings = lib.mkOptionDefault {
           "${modifier}+p" = "exec rofi-rbw";
+
+          "${modifier}+Ctrl+Left" = "move container to output left";
+          "${modifier}+Ctrl+Right" = "move container to output right";
+          "${modifier}+Ctrl+Up" = "move container to output up";
+          "${modifier}+Ctrl+Down" = "move container to output down";
+
+          "${modifier}+Alt+Left" = "move workspace to output left";
+          "${modifier}+Alt+Right" = "move workspace to output right";
+          "${modifier}+Alt+Up" = "move workspace to output up";
+          "${modifier}+Alt+Down" = "move workspace to output down";
+
 
           "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume raise";
           "XF86AudioLowerVolume" = "exec  swayosd-client --output-volume lower";
