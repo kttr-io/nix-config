@@ -23,12 +23,18 @@ in
 {
   options.home.common.linux.java = {
     enable = lib.mkEnableOption "Java module";
+
+    jdk = lib.mkOption {
+      description = "default JDK";
+      type = lib.types.package;
+      default = defaultJdk;
+    };
   };
 
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      (maven.override { jdk = defaultJdk; } )
+      (maven.override { jdk = cfg.jdk; } )
     ];
 
     # Install multiple JDKs to .jdks 
@@ -41,7 +47,7 @@ in
     # but there can only be one default
     programs.java = {
       enable = true;
-      package = defaultJdk;
+      package = cfg.jdk;
     };
 
     home.shellAliases = (builtins.listToAttrs (builtins.map (jdk: 
