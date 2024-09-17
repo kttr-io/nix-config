@@ -16,8 +16,9 @@ in
         "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKlNSgglY6iQGMZYQxBq0dQe0oTyNWupKNWiVaWSwIuFAAAAFXNzaDpta29ldHRlci0xNjY2Njk2Mg=="
         "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIFVeV5Uk7FV6YufANuKlNgjySIVBoBHo2QJVR/MnpHeuAAAAFXNzaDpta29ldHRlci0xODY5MTU0OQ=="
       ];
-      extraGroups = [ 
-        "wheel" "video" 
+      extraGroups = [
+        "wheel"
+        "video"
       ]
       ++ (lib.optionals config.networking.networkmanager.enable [ "networkmanager" ])
       ++ (lib.optionals config.virtualisation.docker.enable [ "docker" ]);

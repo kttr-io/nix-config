@@ -34,15 +34,17 @@ in
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
-      (maven.override { jdk = cfg.jdk; } )
+      (maven.override { jdk_headless = cfg.jdk; })
     ];
 
     # Install multiple JDKs to .jdks 
-    home.file = (builtins.listToAttrs (builtins.map (jdk: 
-    {
-      name = jdkHome jdk;
-      value = { source = jdk; };
-    }) jdks));
+    home.file = (builtins.listToAttrs (builtins.map
+      (jdk:
+        {
+          name = jdkHome jdk;
+          value = { source = jdk; };
+        })
+      jdks));
 
     # but there can only be one default
     programs.java = {
@@ -50,14 +52,16 @@ in
       package = cfg.jdk;
     };
 
-    home.shellAliases = (builtins.listToAttrs (builtins.map (jdk: 
-    {
-      name = "jdk-${jdkName jdk}";
-      value = ''
-        echo 'Spawning a shell with JDK: ${jdkName jdk} ...'; 
-        env JAVA_HOME=$HOME/${jdkHome jdk} PATH=${jdkHome jdk}/bin:$PATH $SHELL; 
-        echo 'You are now using the default JDK (${jdkName defaultJdk}) again'
-      '';
-    }) jdks));
+    home.shellAliases = (builtins.listToAttrs (builtins.map
+      (jdk:
+        {
+          name = "jdk-${jdkName jdk}";
+          value = ''
+            echo 'Spawning a shell with JDK: ${jdkName jdk} ...'; 
+            env JAVA_HOME=$HOME/${jdkHome jdk} PATH=${jdkHome jdk}/bin:$PATH $SHELL; 
+            echo 'You are now using the default JDK (${jdkName defaultJdk}) again'
+          '';
+        })
+      jdks));
   };
 }

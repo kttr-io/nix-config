@@ -74,7 +74,7 @@ in
     home.pointerCursor = {
       # This works better for fractional scaling because it includes more sizes (eg. 72x72)
       package = pkgs.apple-cursor;
-      name = "macOS-Monterey";
+      name = "macOS";
       size = 24;
       x11.enable = true;
       gtk.enable = true;

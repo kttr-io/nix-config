@@ -6,7 +6,8 @@
 }:
 let
   cfg = config.home.common.linux.desktop.nord;
-in {
+in
+{
   options.home.common.linux.desktop.nord = {
     enable = lib.mkEnableOption "Nord Theme";
   };

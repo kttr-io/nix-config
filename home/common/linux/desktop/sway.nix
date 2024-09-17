@@ -28,8 +28,8 @@ in
     home.common.linux.desktop.swaync.enable = lib.mkDefault true;
 
     home.packages = with pkgs; [
+      kanshi
       wl-mirror
-      unstable.kanshi
     ];
 
     wayland.windowManager.sway = {
@@ -114,7 +114,6 @@ in
 
     services.kanshi = {
       enable = true;
-      package = pkgs.unstable.kanshi;
     };
 
     services.swayosd.enable = true;
@@ -125,13 +124,13 @@ in
         { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock"; }
       ];
     };
-    
+
     programs.swaylock.enable = true;
 
     programs.wlogout = {
       enable = true;
     };
-    
+
     xdg.portal = {
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr

@@ -33,7 +33,6 @@ in
     nixpkgs = {
       overlays = [
         outputs.overlays.my-packages
-        outputs.overlays.unstable-packages
       ];
     };
 
@@ -57,7 +56,7 @@ in
     programs.home-manager.enable = true;
 
     programs.direnv.enable = true;
-    
+
     programs.neovim = {
       enable = true;
       viAlias = true;

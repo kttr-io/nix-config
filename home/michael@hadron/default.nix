@@ -28,7 +28,7 @@
   home.common.linux.desktop.sway.nvidia = true;
 
   home.packages = with pkgs; [
-    pkgs.unstable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
   ];
 
   services.kanshi.settings = [

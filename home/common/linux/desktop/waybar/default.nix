@@ -43,7 +43,7 @@ in
       enable = lib.mkDefault true;
       libnotify = lib.mkDefault false;
     };
-    
+
 
     programs.waybar = {
       enable = true;
@@ -149,8 +149,8 @@ in
           };
 
           "tray" = {
-              icon-size = 20;
-              spacing = 10;
+            icon-size = 20;
+            spacing = 10;
           };
 
           "clock" = {
@@ -158,9 +158,9 @@ in
           };
 
           "custom/power" = {
-              "format" = "⏻";
-              "tooltip" = false;
-              "on-click" = "wlogout";
+            "format" = "⏻";
+            "tooltip" = false;
+            "on-click" = "wlogout";
           };
         };
       };

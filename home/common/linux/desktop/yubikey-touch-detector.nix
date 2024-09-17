@@ -33,11 +33,11 @@ in
         ];
       };
       Unit = {
-        Requires = ["yubikey-touch-detector.socket"];
+        Requires = [ "yubikey-touch-detector.socket" ];
       };
       Install = {
         WantedBy = [ "graphical-session.target" ];
-        Also = ["yubikey-touch-detector.socket"];
+        Also = [ "yubikey-touch-detector.socket" ];
       };
     };
 
