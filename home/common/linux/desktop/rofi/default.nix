@@ -21,8 +21,6 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    xdg.configFile."rofi/themes/simple-glass.rasi".source = ./themes/simple-glass.rasi;
-
     programs.rofi = {
       enable = true;
       package = cfg.package;

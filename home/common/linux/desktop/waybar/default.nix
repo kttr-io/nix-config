@@ -47,10 +47,6 @@ in
 
     programs.waybar = {
       enable = true;
-      catppuccin = {
-        enable = true;
-        mode = "createLink";
-      };
 
       settings = {
         mainBar = {
@@ -59,15 +55,12 @@ in
           height = 30;
 
           modules-left = [
-            "hyprland/window"
             "sway/window"
           ];
           modules-center = [
-            "hyprland/workspaces"
             "sway/workspaces"
           ];
           modules-right = [
-            "hyprland/submap"
             "sway/mode"
             "custom/waybar-yubikey"
             "cpu"
@@ -80,20 +73,10 @@ in
             "custom/power"
           ];
 
-          "hyprland/window" = {
-            separate-outputs = true;
-            icon = true;
-            icon-size = 20;
-          };
-
           "sway/window" = {
             separate-outputs = true;
             icon = true;
             icon-size = 20;
-          };
-
-          "hyprland/workspaces" = {
-            all-outputs = false;
           };
 
           "sway/workspaces" = {

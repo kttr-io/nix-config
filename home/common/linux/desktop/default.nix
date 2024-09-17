@@ -16,7 +16,6 @@ in
   imports = [
     ./fonts.nix
     ./gnome.nix
-    ./hyprland.nix
     ./sway.nix
     ./terminal.nix
     ./vscode.nix
@@ -24,7 +23,6 @@ in
     ./waybar
     ./rofi
     ./swaync
-    ./catppuccin
     ./nord
   ];
 
@@ -42,7 +40,6 @@ in
     home.common.linux.enable = true;
 
     home.common.linux.desktop.gnome.enable = lib.mkDefault true;
-    home.common.linux.desktop.hyprland.enable = lib.mkDefault true;
     home.common.linux.desktop.sway.enable = lib.mkDefault true;
 
     dconf = {

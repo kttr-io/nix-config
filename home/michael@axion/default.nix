@@ -24,46 +24,8 @@
   home.common.linux.desktop.enable = true;
   home.common.linux.desktop.nord.enable = true;
 
-  wayland.windowManager.hyprland.settings = {
-    monitor = [
-      # XPS 13 9370, 4K Screen
-      "desc:Sharp Corporation 0x148B, preferred, 0x0, 2.5"
-      # LG Ultrawide 38"
-      # left of integrated display
-      "desc:LG Electronics LG ULTRAWIDE 0x00001212, preferred, auto-left, auto"
-    ];
-
-    device = [
-      {
-        # XPS 13 internal Keyboard
-        name = "at-translated-set-2-keyboard";
-        kb_layout = "de";
-        kb_variant = "basic";
-      }
-      {
-        # XPS 13 touchscreen
-        name = "elan24ee:00-04f3:24ee";
-        enabled = false;
-      }
-    ];
-  };
-
   wayland.windowManager.sway = {
     config = {
-      # output = {
-      #   # XPS 13 9370, 4K Screen
-      #   # use 1080p to save some battery...
-      #   "eDP-1" = {
-      #     scale = "1.25";
-      #     mode = "--custom 1920x1080@60Hz";
-      #     position = "3840 736";
-      #   };
-      #   "LG Electronics LG ULTRAWIDE 0x00001212" = {
-      #     mode = "3840x1600@60Hz";
-      #     position = "0 0";
-      #   }
-      # };
-
       input = {
         # XPS 13 internal Keyboard
         "1:1:AT_Translated_Set_2_keyboard" = {
@@ -79,7 +41,6 @@
         "1267:9454:ELAN24EE:00_04F3:24EE" = {
           events = "disabled";
         };
-
       };
     };
   };

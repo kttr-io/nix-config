@@ -18,7 +18,6 @@ let
     persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
   };
 
-  pkgs-hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
   pkgs-wayland = inputs.wayland.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
@@ -54,16 +53,6 @@ in
   hardware.opengl.extraPackages = with pkgs; [
     nvidia-vaapi-driver
   ];
-
-  programs.hyprland = {
-    enable = true;
-
-    # Use hyprland unstable, should improve NVIDIA situation
-    package = pkgs.unstable.hyprland;
-
-    #This seems to be broken (as of 2024-09-02)
-    # portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
-  };
 
   programs.sway = {
     enable = true;
