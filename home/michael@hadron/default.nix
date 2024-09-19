@@ -19,6 +19,7 @@
   # dev tools
   home.common.linux.java.enable = true;
   home.common.global.nodejs.enable = true;
+  home.common.global.kubernetes-cli.enable = true;
 
   # desktop
   home.common.linux.desktop.enable = true;

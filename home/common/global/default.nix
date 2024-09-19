@@ -26,6 +26,7 @@ in
     ./bitwarden.nix
     ./nodejs.nix
     ./pinentry.nix
+    ./kubernetes-cli.nix
   ];
 
   config = {
