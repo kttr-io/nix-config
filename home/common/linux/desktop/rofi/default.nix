@@ -17,6 +17,12 @@ in
         type = lib.types.package;
         default = pkgs.rofi-wayland;
       };
+    rbw.package = lib.mkOption
+      {
+        description = "rofi-rbw package";
+        type = lib.types.package;
+        default = pkgs.rofi-rbw-wayland;
+      };
   };
 
   config = lib.mkIf cfg.enable {
@@ -26,8 +32,8 @@ in
       package = cfg.package;
     };
 
-    home.packages = with pkgs; lib.optionals (bitwardenEnabled) [
-      rofi-rbw-wayland
+    home.packages = lib.optionals (bitwardenEnabled) [
+      cfg.rbw.package
     ];
   };
 }

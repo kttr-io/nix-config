@@ -37,11 +37,18 @@ in
       package = null; # use global package
       wrapperFeatures.gtk = true;
 
-      config = rec {
+      config = 
+      let
+        grim = "${pkgs.grim}/bin/grim";
+        slurp = "${pkgs.slurp}/bin/slurp";
+        rofi = "${config.home.common.linux.desktop.rofi.package}/bin/rofi";
+        rofi-rbw = "${config.home.common.linux.desktop.rofi.rbw.package}/bin/rofi-rbw";
+      in
+      rec {
         # Super/Logo key
         modifier = "Mod4";
         inherit terminal;
-        menu = "rofi -show drun";
+        menu = "${rofi} -show drun";
 
         input."*" = {
           xkb_layout = "us(intl)";
@@ -56,7 +63,7 @@ in
         ];
 
         keybindings = lib.mkOptionDefault {
-          "${modifier}+p" = "exec rofi-rbw";
+          "${modifier}+p" = "exec ${rofi-rbw}";
 
           "${modifier}+q" = "kill";
 
@@ -76,6 +83,9 @@ in
           "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
           "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
           "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
+
+          "Print" = "exec ${slurp} | ${grim} -g-";
+          "Alt+Print" = "exec ${slurp} -o | ${grim} -g-";
         };
 
         floating.criteria = [
