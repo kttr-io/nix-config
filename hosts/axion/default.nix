@@ -24,6 +24,8 @@
 
   disko.devices.disk.main.device = "/dev/nvme0n1";
 
+  hardware.keyboard.qmk.enable = true;
+  
   environment.systemPackages = with pkgs; [
     dell-command-configure
   ];

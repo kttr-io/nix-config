@@ -45,6 +45,8 @@ in
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   programs.sway = {
     enable = true;
 
