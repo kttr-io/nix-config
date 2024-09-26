@@ -30,7 +30,6 @@ in
 
     home.packages = with pkgs; [
       brave
-      firefox
       gnome-online-accounts-gtk
       thunderbird
       yubioath-flutter
@@ -51,6 +50,11 @@ in
         };
       };
     };
+
+    programs.joplin-desktop.enable = true;
+    
+    # TODO configure thunderbird profiles/accounts
+    #programs.thunderbird.enable = true;
 
     services.darkman = {
       enable = true;

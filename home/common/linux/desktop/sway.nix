@@ -93,6 +93,8 @@ in
           { app_id = "pavucontrol"; }
           { app_id = "yubioath-flutter"; }
           { app_id = "nm-connection-editor"; }
+          # Joplin file picker etc
+          { app_id = "@joplinapp-desktop"; }
         ];
 
         window.commands = [
