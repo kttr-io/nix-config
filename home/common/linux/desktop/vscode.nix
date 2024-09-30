@@ -16,6 +16,7 @@ in
 
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
+      hashicorp.terraform
     ];
 
     userSettings = {
