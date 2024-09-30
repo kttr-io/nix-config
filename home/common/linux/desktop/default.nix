@@ -16,6 +16,7 @@ in
   imports = [
     ./fonts.nix
     ./gnome.nix
+    ./libreoffice.nix
     ./sway.nix
     ./terminal.nix
     ./vscode.nix
@@ -40,6 +41,7 @@ in
 
     home.common.linux.desktop.gnome.enable = lib.mkDefault true;
     home.common.linux.desktop.sway.enable = lib.mkDefault true;
+    home.common.linux.desktop.libreoffice.enable = lib.mkDefault true;
 
     dconf = {
       enable = true;
