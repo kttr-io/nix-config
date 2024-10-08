@@ -30,6 +30,7 @@
 
   home.packages = with pkgs; [
     jetbrains.idea-ultimate
+    lens
   ];
 
   services.kanshi.settings = [
