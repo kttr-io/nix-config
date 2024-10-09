@@ -31,6 +31,8 @@
   home.packages = with pkgs; [
     jetbrains.idea-ultimate
     lens
+    itch
+    cider
   ];
 
   services.kanshi.settings = [

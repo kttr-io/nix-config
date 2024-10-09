@@ -39,7 +39,10 @@ in
       pulse.enable = true;
     };
 
-    programs.appimage.binfmt = true;
+    programs.appimage = {
+      enable = true;
+      binfmt = true;
+    };
 
     security.polkit.enable = true;
 

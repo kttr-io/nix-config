@@ -3,4 +3,5 @@
 pkgs:
 {
   zen-browser = import ./zen-browser pkgs "specific";
+  cider = pkgs.callPackage ./cider {};
 }
