@@ -95,6 +95,7 @@ in
           { app_id = "nm-connection-editor"; }
           # Joplin file picker etc
           { app_id = "@joplinapp-desktop"; }
+          { app_id = "Cider"; }
         ];
 
         window.commands = [
