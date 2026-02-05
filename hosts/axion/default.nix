@@ -18,7 +18,6 @@
     ../common/users/michael
   ];
 
-  common.linux.bootloader.secureboot = true;
   common.linux.desktop.enable = true;
   common.linux.docker.enable = true;
 

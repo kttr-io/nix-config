@@ -26,7 +26,6 @@ in
     "nvidia-drm.fbdev=1"
   ];
 
-  common.linux.bootloader.secureboot = true;
   common.linux.desktop.enable = true;
   common.linux.docker.enable = true;
 
@@ -54,11 +53,6 @@ in
       [
         "--unsupported-gpu"
       ];
-
-    # Use nixpkgs-wayland package, should improve NVIDIA situation
-    package = pkgs.sway.override (previous: {
-      sway-unwrapped = pkgs-wayland.sway-unwrapped;
-    });
   };
 
   programs.steam = {

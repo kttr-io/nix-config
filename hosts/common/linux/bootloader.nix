@@ -29,31 +29,23 @@ in
     ];
 
     boot.loader.grub = {
-      enable =
-        if cfg.secureboot
-        then lib.mkForce false
-        else lib.mkDefault false;
+      enable = lib.mkDefault false;
 
       efiSupport = true;
       efiInstallAsRemovable = true;
     };
 
     boot.loader.systemd-boot = {
-      enable =
-        if cfg.secureboot
-        then lib.mkForce false
-        else lib.mkDefault true;
+      enable = lib.mkDefault false;
       consoleMode = "auto";
+    };
+
+    boot.loader.limine = {
+      enable = lib.mkDefault true;
     };
 
     boot.initrd.systemd = {
       enable = true;
-      enableTpm2 = true;
-    };
-
-    boot.lanzaboote = {
-      enable = cfg.secureboot;
-      pkiBundle = "/etc/secureboot";
     };
   };
 }
