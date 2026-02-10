@@ -23,7 +23,10 @@ in
   config = {
     programs.git = {
       enable = true;
-      inherit (cfg) userEmail userName;
+      settings.user = {
+        email = cfg.userEmail;
+        name = cfg.userName;
+      };
     };
   };
 }

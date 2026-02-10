@@ -29,7 +29,7 @@
   home.common.linux.desktop.sway.nvidia = true;
 
   home.packages = with pkgs; [
-    jetbrains.idea-ultimate
+    jetbrains.idea
     lens
     itch
     cider

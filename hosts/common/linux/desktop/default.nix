@@ -24,14 +24,15 @@ in
 
     services.xserver = {
       enable = true;
-      displayManager.gdm.enable = lib.mkDefault true;
-      desktopManager.gnome.enable = lib.mkDefault true;
     };
+
+    services.displayManager.gdm.enable = lib.mkDefault true;
+    services.desktopManager.gnome.enable = lib.mkDefault true;
 
     services.flatpak.enable = true;
 
     security.rtkit.enable = true;
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     services.pipewire = {
       enable = true;
       alsa.enable = true;

@@ -11,16 +11,19 @@ in
 {
   programs.vscode = {
     enable = true;
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
 
-    extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      hashicorp.terraform
-    ];
+    profiles.default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
 
-    userSettings = {
-      editor.fontFamily = monospaceFontFamiliesCSS;
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        hashicorp.terraform
+      ];
+
+      userSettings = {
+        editor.fontFamily = monospaceFontFamiliesCSS;
+      };
     };
   };
 }
