@@ -15,13 +15,13 @@ in
       {
         description = "rofi package";
         type = lib.types.package;
-        default = pkgs.rofi-wayland;
+        default = pkgs.rofi;
       };
     rbw.package = lib.mkOption
       {
         description = "rofi-rbw package";
         type = lib.types.package;
-        default = pkgs.rofi-rbw-wayland;
+        default = pkgs.rofi-rbw;
       };
   };
 

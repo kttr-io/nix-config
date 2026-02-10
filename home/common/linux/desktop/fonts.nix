@@ -23,7 +23,9 @@ in
     home.packages = with pkgs;
       [
         font-awesome
-        (nerdfonts.override { fonts = nerdfontsFonts; })
+	nerd-fonts.fira-mono
+	nerd-fonts.fira-code
+	nerd-fonts.jetbrains-mono
       ];
 
     fonts.fontconfig = {
